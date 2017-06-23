@@ -44,15 +44,14 @@ Par example l'article suivant est dans la *"DevOps/Containerization"* viouios de
 Une fois votre article écrit il vous faudra faire un commit local de vos modifications
 
 ```bash
-Git add .
-git commit
+git add .
+git commit -m "<Your commit message>"
 ```
 
 Une fois le Commit fait, il ne faudra pas oublier de pousser vos modifications sur le repos distant :
 
 ```bash
-Git add .
-git commit
+git push
 ```
 
 ### 1.3 Référencer le fichier MarkDown dans Wordpress

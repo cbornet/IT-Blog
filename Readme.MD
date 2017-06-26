@@ -4,8 +4,8 @@
 
 La création d'un Article peut être realisée de deux manières
 
-1. En créant un fichier Markdown sur le github Cdiscount IT-Blog
-1. Directement en Markdown sur le Wordpress.
+ 1. En créant un fichier Markdown sur le github Cdiscount IT-Blog
+ 1. Directement en Markdown sur le Wordpress.
 
 Le format Markdown choisi correspond à celui de [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) et plus précisemment au format étendu [**Parsedown Extra**](https://michelf.ca/projects/php-markdown/extra/)
 

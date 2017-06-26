@@ -1,5 +1,8 @@
 # Comment écrire un article de blog ?
 
+sdgsdfgsdfgsd
+sdfgsdfgsdfgsd
+
 ## Introduction
 
 La création d'un Article peut être realisée de deux manières
@@ -71,7 +74,7 @@ git push
 ![Ajouter un titre](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/title.png)
 
 * Selectionner la/les catégorie(s) de l'article,
-  * 1 catégorie est obligatoire pour avoir une image sur l'article.
+   * 1 catégorie est obligatoire pour avoir une image sur l'article.
 
 ![Choix des catégories](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/cat
 .png)

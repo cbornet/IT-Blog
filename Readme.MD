@@ -7,7 +7,7 @@ La création d'un Article peut être realisée de deux manières
 1. En créant un fichier Markdown sur le github Cdiscount IT-Blog
 1. Directement en Markdown sur le Wordpress.
 
-Le format Markdown choisi correspond à celui de [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) et plus précisemment au format étendu **XXXXXX**
+Le format Markdown choisi correspond à celui de [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) et plus précisemment au format étendu [**Parsedown Extra**](https://michelf.ca/projects/php-markdown/extra/)
 
 ## 1. Création via markdown sur GitHub
 
@@ -23,12 +23,10 @@ La première étape est de cloner le repos Git sur votre poste via Git Bash pour
 git clone https://github.com/Cdiscount/IT-Blog.git
 ```
 
+ou
+
 ```bash
 git clone git@github.com:Cdiscount/IT-Blog.git
-```
-
-```Bash
-####### TODO --> SSH Bash Cmd
 ```
 
 ### 1.2 Créer un fichier Markdown
@@ -61,9 +59,10 @@ git push
 ```
 
 * Se Connecter sur le site le blog avec votre identifiant CDBDX,
-  * TODO ScreenShoot
+  * ![Ajouter un article](https://github.com/Cdiscount/IT-Blog/images/readme/addnew.png)
+
 * Ajouter un article via le menu d'administration en haut de Page,
-  * TODO ScreenShoot
+  * TODO Screenshot
 * Selectionner la/les catégorie(s) de l'article,
   * 1 catégorie obligatoire pour avoir une image sur l'article.
 * Ajouter Une image personalisée à l'article,

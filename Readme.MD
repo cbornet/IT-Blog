@@ -59,10 +59,17 @@ git push
 ```
 
 * Se Connecter sur le site le blog avec votre identifiant CDBDX,
-  * ![Ajouter un article](https://github.com/Cdiscount/IT-Blog/images/readme/addnew.png)
+
+![Connection](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/connect.png)
 
 * Ajouter un article via le menu d'administration en haut de Page,
-  * TODO Screenshot
+
+![Ajouter un article](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/addnew.png)
+
+* Ajouter un titre à votre article et pensez à modifier le permalink pour faciliter le référencement.
+
+![Ajouter un titre](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/title.png)
+
 * Selectionner la/les catégorie(s) de l'article,
   * 1 catégorie obligatoire pour avoir une image sur l'article.
 * Ajouter Une image personalisée à l'article,

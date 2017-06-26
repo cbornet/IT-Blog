@@ -58,7 +58,7 @@ git push
 ####### TODO --> Captures écrans WordPress
 ```
 
-* Se Connecter sur le site le blog avec votre identifiant CDBDX,
+* Se Connecter sur le site le blog avec votre identifiant de domaine,
 
 ![Connection](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/connect.png)
 
@@ -71,15 +71,26 @@ git push
 ![Ajouter un titre](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/title.png)
 
 * Selectionner la/les catégorie(s) de l'article,
-  * 1 catégorie obligatoire pour avoir une image sur l'article.
+  * 1 catégorie est obligatoire pour avoir une image sur l'article.
+
+![Choix des catégories](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/cat
+.png)
+
 * Ajouter Une image personalisée à l'article,
   * Par défaut l'image de la catégorie sera utilisée.
-* En bas de formulaire dans la zone "TODO"  saisir le lien vers le fichier MarkDown de l'article,
+
+![Image du post](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/image.png)
+
+* En bas de formulaire dans la zone "Markdown File Path" saisir le lien vers le fichier Markdown de l'article,
   * A chaque commit, sous GitHub l'article sera modifié sur le Blog (via une gestion d'ETAg).
+
+![Lien l'article à github](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/markdown_file_path.png)
+
 * Publier votre Article en mode Draft,
 * Faite relire votre article par un autre redacteur du blog,
 
-NB: Afin d'alimenter le Blog régulièrement il est préférable d'échelonner la publication des articles. Si vous avez 2 articles à publier, veuillez espacer la publication d'au moins 1 jour.
+NB: Afin d'alimenter le Blogbrégulièrement il est préférable d'échelonner la publication des articles. Si vous avez 2 articles à publier, veuillez espacer la publication d'au moins 1 jour.
+
 
 ## 2. Création via WordPress
 

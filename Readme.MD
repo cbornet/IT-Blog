@@ -89,8 +89,7 @@ git push
 * Publier votre Article en mode Draft,
 * Faite relire votre article par un autre redacteur du blog,
 
-NB: Afin d'alimenter le Blogbrégulièrement il est préférable d'échelonner la publication des articles. Si vous avez 2 articles à publier, veuillez espacer la publication d'au moins 1 jour.
-
+NB: Afin d'alimenter le blog régulièrement il est préférable d'échelonner la publication des articles. Si vous avez 2 articles à publier, veuillez espacer la publication d'au moins 1 jour.
 
 ## 2. Création via WordPress
 

@@ -76,10 +76,10 @@ git push
 ![Choix des catégories](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/cat
 .png)
 
-* Ajouter Une image personalisée à l'article,
+* Ajouter une image personalisée à l'article,
   * Par défaut l'image de la catégorie sera utilisée.
 
-![Image du post](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/image.png)
+![Image du post](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/selectimage.png)
 
 * En bas de formulaire dans la zone "Markdown File Path" saisir le lien vers le fichier Markdown de l'article,
   * A chaque commit, sous GitHub l'article sera modifié sur le Blog (via une gestion d'ETAg).

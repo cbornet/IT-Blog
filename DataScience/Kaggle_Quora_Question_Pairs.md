@@ -143,7 +143,7 @@ exercised in preparing the data sets.
 ### Models
 
 This challenge confirmed the 
-[Extreme Gradient Boosting](http://xgboost.readthedocs.io/en/latest/])
+[Extreme Gradient Boosting](http://xgboost.readthedocs.io/en/latest/)
 model (xgboost) as an indispensable method for anyone willing to obtain a 
 decent score within a Kaggle competition. We all ended up resorting
 to xgboost, like the vast majority of the participants if we believe

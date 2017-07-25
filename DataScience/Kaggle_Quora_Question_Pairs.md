@@ -19,7 +19,7 @@ The challenge took place from March 16<sup>th</sup> to June
 about one month after it started, so we mostly ran after the score and
 finished in the top 8%. Here:
  
-![](../images/DataScience/kaggle-quora-final-ranking.png "Final ranking")
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/kaggle-quora-final-ranking.png "Final ranking")
 
 ## The challenge
 

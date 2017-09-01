@@ -15,6 +15,67 @@ L'interface WordPress étant lourde, la solution de rédiger des fichier MarkDow
 
 Le principe est de créer pour chaque article un fichier Markdown qui sera ensuite synchronisé avec WordPress. Toute modification du fichier Markdown pourra être soit automatiquement répercuté sur le Wordpress, soit à la demande.
 
+```csharp
+/// <summary>
+        /// Retrieves the boolean value contained in the key.
+        /// </summary>
+        /// <param name="key">The appSettings key.</param>
+        /// <param name="siteId">The site identifier.</param>
+        /// <param name="defaultReturnValue">Nullable default value returned if :
+        /// - the key does not exist
+        /// - the cast does not work.</param>
+        /// <returns>The nullable boolean value contained in the key;
+        /// default value returned if :
+        /// - the key does not exist
+        /// - the cast does not work.</returns>
+        public static bool? GetAppSettingsToBool(string key, string siteId, bool? defaultReturnValue)
+        {
+            if (!string.IsNullOrEmpty(key))
+            {
+                string value = _internalConfigurationManager.AppSettings[key, siteId];
+                if (!string.IsNullOrEmpty(value))
+                {
+                    bool returnValue;
+                    if (bool.TryParse(value, out returnValue))
+                    {
+                        return returnValue;
+                    }
+                }
+            }
+
+            return defaultReturnValue;
+        }
+
+        /// <summary>
+        /// Retrieves the integer value contained in the key.
+        /// </summary>
+        /// <param name="key">The appSettings key.</param>
+        /// <param name="defaultReturnValue">Nullable default value returned if :
+        /// - the key does not exist
+        /// - the cast does not work.</param>
+        /// <returns>The nullable integer value contained in the key;
+        /// default value returned if :
+        /// - the key does not exist
+        /// - the cast does not work.</returns>
+        public static int? GetAppSettingsToInt(string key, int? defaultReturnValue)
+        {
+            if (!string.IsNullOrEmpty(key))
+            {
+                string value = _internalConfigurationManager.AppSettings[key];
+                if (!string.IsNullOrEmpty(value))
+                {
+                    int returnValue;
+                    if (int.TryParse(value, out returnValue))
+                    {
+                        return returnValue;
+                    }
+                }
+            }
+
+            return defaultReturnValue;
+        }
+```
+
 ### 1.1 Récupérer le repo Git en local
 
 La première étape est de cloner le repos Git sur votre poste via Git Bash pour les poste Linux ou via la commande Git pour les linuxiens.

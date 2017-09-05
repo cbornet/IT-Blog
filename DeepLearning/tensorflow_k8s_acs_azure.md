@@ -1,4 +1,4 @@
-This article describes our 
+This article describes our Kubernetes Setup on Azure with multi-GPU agents for running tensorflow / tensorflow-serving deep learning containers.
 
 ACS Engine
 ----------
@@ -68,8 +68,7 @@ another of 3 CPU oriented, and a last one GPU oriented.
 project (and supported under linux) are in the **NC\_** range with
 nvidia K80 GPU.
 
-More info here :
-<https://azure.microsoft.com/en-us/blog/azure-n-series-general-availability-on-december-1/>
+More info on N-series features and availabilty on Azure Blog : <https://azure.microsoft.com/en-us/blog/azure-n-series-general-availability-on-december-1/>
 
 More info about the cluster definition using ACS engine :
 <https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md>
@@ -78,7 +77,7 @@ More info about the cluster definition using ACS engine :
 
 As simple as :
 
-`./acs-engine` `generate` `kubernetes.json`
+`./acs-engine generate kubernetes.json`
 
 ACS engine will render ready to use Azure RM deployments under
 subdirectory *\_output/Kubernetes-<clusterid>/\**
@@ -91,9 +90,7 @@ and *azuredeploy.parameters.json*.
 We will now be able to deploy our cluster using our usual ansible
 playbooks or like this, using Azure CLI :
 
-`ansible-playbook -vvvv azure-provisionning.yml -e 'rg_name=`<resource_group>` template_suffix=.json template_deploy_pattern="" template_params_pattern=.parameters location=northeurope template=_output/Kubernetes-XXXXXX/azuredeploy.json'`
-
-`$ az group deployment create \    --name "`<DEPLOYMENT NAME>`" \    --resource-group "`<resource_group>`" \    --template-file "./_output/`<INSTANCE>`/azuredeploy.json" \    --parameters "./_output/`<INSTANCE>`/azuredeploy.parameters.json"`
+`az group deployment create \    --name "`<DEPLOYMENT NAME>`" \    --resource-group "`<resource_group>`" \    --template-file "./_output/`<INSTANCE>`/azuredeploy.json" \    --parameters "./_output/`<INSTANCE>`/azuredeploy.parameters.json"`
 
 **Warning** : NC\_ range VMs are not available in every Azure region.
 Here we had to subscribe a resource group in northeurope.
@@ -109,16 +106,10 @@ We began with provisionning classical GPU VMs aside our k8s cluster to
 start our developments. Then in a second time we activated the GPUs
 hosts on our k8s cluster.
 
-*Note* : Newer versions of ACS engine deploy kubernetes out-of-the-box "GPUs-enabled" ( [see the merged pull request](https://github.com/Azure/acs-engine/pull/385>)). 
+*Note* : Newer versions of ACS engine deploy kubernetes out-of-the-box "GPUs-enabled" ( [see the merged pull request](https://github.com/Azure/acs-engine/pull/385>)).
 
 ### GPU-enabled machine
 
-**Recipe** :
-<http://git.cdbdx.biz/baptiste.durand/ansible-k8s-imageprocessing/blob/master/roles/nvidia-gpu/tasks/main.yml>
-cdsadmin@a04gpu101.northeurope.cloudapp.azure.com
-
-**Kubernetes GPU nodes recipe** :
-<http://git.cdbdx.biz/baptiste.durand/ansible-k8s-imageprocessing/blob/master/site.yml>
 
 #### CUDA
 
@@ -129,9 +120,9 @@ Install CUDA from the Nvidia repositories:
 
 Using Apt, add the repo
 http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86\_64
-/
+/ to your sources.list.d entries
 
-and their gpg : developer.download.nvidia.com/compute/cuda/repos/GPGKEY
+and their gpg key : developer.download.nvidia.com/compute/cuda/repos/GPGKEY
 
 We are now using v8.0.61-1.
 
@@ -148,11 +139,11 @@ You have to sign in the nvidia developer program :
 <https://developer.nvidia.com/cudnn>
 
 then [download the linux runtime
-(.deb)](https://developer.nvidia.com/rdp/cudnn-download).
+(.deb)](https://developer.nvidia.com/rdp/cudnn-download) and install it : 
+`dpkg -i libcudnn6\_6.0.21-1+cuda8.0\_amd64.deb`
 
 We are now using cudnn v6.0.21-1.
 
-dpkg -i libcudnn6\_6.0.21-1+cuda8.0\_amd64.deb
 
 #### Check
 
@@ -175,10 +166,10 @@ libs are listed. works as a cli and a REST API is also presented.
 nvidia-docker : a cli wrapping around the docker CLI and setting paths
 to modules and libraries provided by nvidia-docker-plugin API.
 
-wget
-<https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb>
+`wget
+https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb`
 
-dpkg -i nvidia-docker\_1.0.1-1\_amd64.deb
+`dpkg -i nvidia-docker\_1.0.1-1\_amd64.deb`
 
 Once the install is OK, running the following :
 
@@ -257,5 +248,5 @@ The kernel shows some errors
 links :
 <https://devtalk.nvidia.com/default/topic/876218/upgrading-from-346-47-to-352-41-on-aws-causes-kworkers-to-lockup-on-boot-module-load-and-prevents-u/>
 
-To Be Continued
----------------
+Tensorflow : To Be Continued
+----------------------------

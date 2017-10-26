@@ -134,8 +134,7 @@ git push
 * Selectionner la/les catégorie(s) de l'article,
    * 1 catégorie est obligatoire pour avoir une image sur l'article.
 
-![Choix des catégories](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/cat
-.png)
+![Choix des catégories](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/cat.png)
 
 * Ajouter une image personalisée à l'article,
   * Par défaut l'image de la catégorie sera utilisée.

@@ -316,7 +316,7 @@ plot_model(clf.model, to_file='model.png', show_shapes=True)
 
 Saving a Keras model is pretty simple as a method is provided natively:
 ```python
-model.save('/tmp/keras_mlp.h5')
+clf.model.save('/tmp/keras_mlp.h5')
 ```
 This saves the architecture of the model, the weights as well as the training configuration (loss, optimizer).
 
@@ -324,4 +324,4 @@ This saves the architecture of the model, the weights as well as the training co
 In this post, you learn how to define and evaluate accuracy of a neural network for multi-class classification using the Keras library.
 
 
-The script used to illustrate this post is provided [here](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/scripts/similar_products.py).
+The script used to illustrate this post is provided [here](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/scripts/pos_tagging_neural_nets_keras.py).

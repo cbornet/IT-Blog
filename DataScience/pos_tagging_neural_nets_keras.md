@@ -51,7 +51,10 @@ print(random.choice(sentences))
 ```
 This yields a list of tuples `(term, tag)`.
 ```
-[('Mr.', 'NOUN'), ('Otero', 'NOUN'), (',', '.'), ('who', 'PRON'), ('apparently', 'ADV'), ('has', 'VERB'), ('an', 'DET'), ('unpublished', 'ADJ'), ('number', 'NOUN'), (',', '.'), ('also', 'ADV'), ('could', 'VERB'), ("n't", 'ADV'), ('be', 'VERB'), ('reached', 'VERB'), ('.', '.')]
+[('Mr.', 'NOUN'), ('Otero', 'NOUN'), (',', '.'), ('who', 'PRON'), ('apparently', 'ADV'), 
+('has', 'VERB'), ('an', 'DET'), ('unpublished', 'ADJ'), ('number', 'NOUN'), (',', '.'), 
+('also', 'ADV'), ('could', 'VERB'), ("n't", 'ADV'), ('be', 'VERB'), ('reached', 'VERB'), 
+('.', '.')]
 ```
 
 This is a multi-class classification problem with more than forty different classes.
@@ -64,7 +67,10 @@ print('nb_tags: %s\ntags: %s' % (len(tags), tags))
 
 ```
 46
-{'IN', 'VBZ', '.', 'RP', 'DT', 'VB', 'RBR', 'CC', '#', ',', 'VBP', 'WP$', 'PRP', 'JJ', 'RBS', 'LS', 'PRP$', 'WRB', 'JJS', '``', 'EX', 'POS', 'WP', 'VBN', '-LRB-', '-RRB-', 'FW', 'MD', 'VBG', 'TO', '$', 'NNS', 'NNPS', "''", 'VBD', 'JJR', ':', 'PDT', 'SYM', 'NNP', 'CD', 'RB', 'WDT', 'UH', 'NN', '-NONE-'}
+{'IN', 'VBZ', '.', 'RP', 'DT', 'VB', 'RBR', 'CC', '#', ',', 'VBP', 'WP$', 'PRP', 'JJ', 
+'RBS', 'LS', 'PRP$', 'WRB', 'JJS', '``', 'EX', 'POS', 'WP', 'VBN', '-LRB-', '-RRB-', 
+'FW', 'MD', 'VBG', 'TO', '$', 'NNS', 'NNPS', "''", 'VBD', 'JJR', ':', 'PDT', 'SYM', 
+'NNP', 'CD', 'RB', 'WDT', 'UH', 'NN', '-NONE-'}
 ```
 
 ### Datasets preprocessing for supervised learning
@@ -172,7 +178,7 @@ X_val, y_val = transform_to_dataset(validation_sentences)
 ### Features encoding
 
 Our neural network takes vectors as inputs, so we need to convert our dict features to vectors. 
-`sklearn` builtin function `DictVectorizer` provides a straightforward way to do that.
+`sklearn` builtin function [`DictVectorizer`](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.DictVectorizer.html) provides a straightforward way to do that.
 
 ```python
 from sklearn.feature_extraction import DictVectorizer

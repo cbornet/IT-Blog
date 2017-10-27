@@ -7,11 +7,11 @@ from nltk.corpus import treebank
 import numpy as np
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.preprocessing import LabelEncoder
-
 from keras.layers import Dense, Dropout, Activation
 from keras.models import Sequential
 from keras.utils import np_utils, plot_model
 from keras.wrappers.scikit_learn import KerasClassifier
+import matplotlib.pyplot as plt
 
 CUSTOM_SEED = 42
 
@@ -94,6 +94,34 @@ def build_model(input_dim, hidden_neurons, output_dim):
     return model
 
 
+def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc):
+    """ Plot model loss and accuracy through epochs. """
+
+    green = '#72c29b'
+    orange = '#FFA577'
+
+    with plt.xkcd():
+        fig, ax1 = plt.subplots()
+        ax1.plot(range(1, len(train_loss) + 1), train_loss, green, linewidth=5,
+                 label='training')
+        ax1.plot(range(1, len(train_val_loss) + 1), train_val_loss, orange,
+                 linewidth=5, label='validation')
+        ax1.set_xlabel('# epoch')
+        ax1.set_ylabel('loss')
+        ax1.tick_params('y')
+        ax1.legend(loc='upper right', shadow=False)
+
+        fig, ax2 = plt.subplots()
+        ax2.plot(range(1, len(train_acc) + 1), train_acc, green, linewidth=5,
+                 label='training')
+        ax2.plot(range(1, len(train_val_acc) + 1), train_val_acc, orange,
+                 linewidth=5, label='validation')
+        ax2.set_xlabel('# epoch')
+        ax2.set_ylabel('accuracy')
+        ax2.tick_params('y')
+        ax2.legend(loc='lower right', shadow=False)
+
+
 if __name__ == '__main__':
     # Ensure reproducibility
     np.random.seed(CUSTOM_SEED)
@@ -162,9 +190,20 @@ if __name__ == '__main__':
     # Finally, fit our classifier
     hist = clf.fit(X_train, y_train)
 
+    # Plot model performance
+    plot_model_performance(
+        train_loss=hist.history.get('loss', []),
+        train_acc=hist.history.get('acc', []),
+        train_val_loss=hist.history.get('val_loss', []),
+        train_val_acc=hist.history.get('val_acc', [])
+    )
+
     # Evaluate model accuracy
     score = clf.score(X_test, y_test, verbose=0)
     print('model accuracy: {}'.format(score))
+
+    # Visualize model architecture
+    plot_model(clf.model, to_file='tmp/model_structure.png', show_shapes=True)
 
     # Finally save model
     clf.model.save('/tmp/keras_mlp.h5')

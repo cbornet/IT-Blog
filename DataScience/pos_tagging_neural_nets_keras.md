@@ -7,9 +7,11 @@ _Data Scientist at Cdiscount_
 
 Part-of-Speech tagging is a well-known task in Natural Language Processing. It refers to the process of classifying words into their parts of speech (also known as words classes or lexical categories). This is a supervised learning approach.
 
-![homer_gif](https://media.giphy.com/media/l2JdWtSlp3Z68ubSM/giphy.gif)
+<div align="center">
+  <img src="https://media.giphy.com/media/l2JdWtSlp3Z68ubSM/giphy.gif" alt="giphy_homer"/>
+</div>
 
-Artificial neural networks have been applied succesfully to compute POS tagging with great performance. We will focus on the Multilayer Perceptron Network, which is a very popular network architecture, considered as the state of the art on Part-of-Speech tagging problems. 
+Artificial neural networks have been applied successfully to compute POS tagging with great performance. We will focus on the Multilayer Perceptron Network, which is a very popular network architecture, considered as the state of the art on Part-of-Speech tagging problems. 
 
 __Let's put it into practice__ 
 
@@ -73,7 +75,9 @@ We split our tagged sentences into 3 datasets :
 - a __validation dataset__ used to tune the parameters of the classifier, for example to choose the number of units in the neural network,
 - a __test dataset__ used *only* to assess the performance of the classifier.
 
-![train_test_val_split](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/train_test_val.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/train_test_val.png" alt="train_test_val_split"/>
+</div>
 
 We use approximately 60% of the tagged sentences for training, 20% as the validation set and 20% to evaluate our model.
 
@@ -214,7 +218,9 @@ y_val = np_utils.to_categorical(y_val)
 
 [`Keras`](https://github.com/fchollet/keras/) is a high-level framework for designing and running neural networks on multiple backends like [`TensorFlow`](https://github.com/tensorflow/tensorflow/), [`Theano`](https://github.com/Theano/Theano) or [`CNTK`](https://github.com/Microsoft/CNTK).
 
-![keras](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/keras.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/keras.png" alt="keras_logo"/>
+</div>
 
 We want to create one of the most basic neural networks: the Multilayer Perceptron. This kind of linear stack of layers can easily be made with the `Sequential` model. This model will contain an input layer, an hidden layer, and an output layer.   
 To overcome overfitting, we use dropout regularization. We set the dropout rate to 20%, meaning that 20% of the randomly selected neurons are ignored during training at each update cycle. 
@@ -281,9 +287,13 @@ hist = clf.fit(X_train, y_train)
 
 With the callback history provided we can visualize the model *log loss* and *accuracy* against time.
 
-![loss](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/loss.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/loss.png" alt="loss"/>
+</div>
 
-![accuracy](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/accuracy.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/accuracy.png" alt="accuracy"/>
+</div>
 
 After 2 epochs, we see that our model begins to overfit. 
 
@@ -309,8 +319,9 @@ from keras.utils import plot_model
 plot_model(clf.model, to_file='model.png', show_shapes=True)
 ```
 
-![model](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/model.png)
-
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/model.png" alt="model"/>
+</div>
 
 ### Save the Keras model
 

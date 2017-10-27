@@ -5,13 +5,13 @@ _Data Scientist at Cdiscount_
 
 > In this tutorial, you will see how you can use a simple Keras model to train and evaluate an artificial neural network for multi-class classification problems. 
 
-Part-of-Speech tagging is a well-known task in Natural Language Processing. It refers to the process of classifying words into their parts of speech (also known as words classes or lexical categories). This is a supervised learning approach.
+Part-of-Speech tagging is a well-known task in [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing). It refers to the process of classifying words into their parts of speech (also known as words classes or lexical categories). This is a supervised learning approach.
 
 <div align="center">
   <img src="https://media.giphy.com/media/l2JdWtSlp3Z68ubSM/giphy.gif" alt="giphy_homer"/>
 </div>
 
-Artificial neural networks have been applied successfully to compute POS tagging with great performance. We will focus on the Multilayer Perceptron Network, which is a very popular network architecture, considered as the state of the art on Part-of-Speech tagging problems. 
+[Artificial neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network) have been applied successfully to compute POS tagging with great performance. We will focus on the Multilayer Perceptron Network, which is a very popular network architecture, considered as the state of the art on Part-of-Speech tagging problems. 
 
 __Let's put it into practice__ 
 
@@ -231,10 +231,10 @@ y_val = np_utils.to_categorical(y_val)
 We want to create one of the most basic neural networks: the Multilayer Perceptron. This kind of linear stack of layers can easily be made with the `Sequential` model. This model will contain an input layer, an hidden layer, and an output layer.   
 To overcome overfitting, we use dropout regularization. We set the dropout rate to 20%, meaning that 20% of the randomly selected neurons are ignored during training at each update cycle. 
 
-We use *Rectified Linear Units* (ReLU) activations for the hidden layers as they are the simplest non-linear activation functions available.
+We use [*Rectified Linear Units*](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) (ReLU) activations for the hidden layers as they are the simplest non-linear activation functions available.
 
 For multi-class classification, we may want to convert the units outputs to probabilities, which can be done using the *softmax* function. We decide to use the *categorical cross-entropy* loss function.
-Finally, we choose Adam optimizer as it seems to be well suited to classification tasks. 
+Finally, we choose [Adam optimizer](https://arxiv.org/abs/1412.6980) as it seems to be well suited to classification tasks. 
 
 ```python
 from keras.models import Sequential
@@ -261,11 +261,11 @@ def build_model(input_dim, hidden_neurons, output_dim):
 
 ### Creating a wrapper between Keras API and Scikit-Learn
 
-Keras provides a wrapper called `KerasClassifier` which implements the Scikit-Learn classifier interface. 
+[`Keras`](https://github.com/fchollet/keras/) provides a wrapper called [`KerasClassifier`](https://keras.io/scikit-learn-api/) which implements the Scikit-Learn classifier interface. 
 
 All model parameters are defined below.
 We need to provide a function that returns the structure of a neural network (`build_fn`). 
-The number of hidden neurons and the batch size are choosen quite arbitrarily. We set the number of epochs to 5 because with more iterations the Multilayer Perceptron starts overfitting (even with Dropout Regularization). 
+The number of hidden neurons and the batch size are choose quite arbitrarily. We set the number of epochs to 5 because with more iterations the Multilayer Perceptron starts overfitting (even with [Dropout Regularization](https://arxiv.org/abs/1207.0580)). 
 
 ```python
 from keras.wrappers.scikit_learn import KerasClassifier
@@ -338,7 +338,11 @@ clf.model.save('/tmp/keras_mlp.h5')
 This saves the architecture of the model, the weights as well as the training configuration (loss, optimizer).
 
 
-In this post, you learn how to define and evaluate accuracy of a neural network for multi-class classification using the Keras library.
+### Ressources
 
+- _`Keras`: The Python Deep Learning library_: [[doc]](https://keras.io/)  
+- _Adam: A Method for Stochastic Optimization_: [[paper]](https://arxiv.org/abs/1412.6980)  
+- _Improving neural networks by preventing co-adaptation of feature detectors_: [[paper]](https://arxiv.org/abs/1207.0580)  
 
+In this post, you learn how to define and evaluate accuracy of a neural network for multi-class classification using the Keras library.  
 The script used to illustrate this post is provided [here](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/scripts/pos_tagging_neural_nets_keras.py).

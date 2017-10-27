@@ -299,10 +299,11 @@ import matplotlib.pyplot as plt
 def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc):
     """ Plot model loss and accuracy through epochs. """
 
-    green = '#72c29b'
+    green = '#72C29B'
     orange = '#FFA577'
 
     with plt.xkcd():
+        # plot model loss
         fig, ax1 = plt.subplots()
         ax1.plot(range(1, len(train_loss) + 1), train_loss, green, linewidth=5,
                  label='training')
@@ -312,7 +313,7 @@ def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc)
         ax1.set_ylabel('loss')
         ax1.tick_params('y')
         ax1.legend(loc='upper right', shadow=False)
-
+        # plot model accuracy
         fig, ax2 = plt.subplots()
         ax2.plot(range(1, len(train_acc) + 1), train_acc, green, linewidth=5,
                  label='training')

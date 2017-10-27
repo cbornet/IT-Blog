@@ -97,7 +97,7 @@ def build_model(input_dim, hidden_neurons, output_dim):
 def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc):
     """ Plot model loss and accuracy through epochs. """
 
-    green = '#72c29b'
+    green = '#72C29B'
     orange = '#FFA577'
 
     with plt.xkcd():

@@ -30,7 +30,7 @@ np.random.seed(CUSTOM_SEED)
 
 ### Getting an annotated corpus
 
-The Penn Treebank is an annotated corpus of POS tags. A sample is available in the [`NLTK`](https://github.com/nltk/nltk) python library which contains a lot of corpora that can be used to train and test some NLP models.
+The [Penn Treebank](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.9.8216&rep=rep1&type=pdf) is an annotated corpus of POS tags. A sample is available in the [`NLTK`](https://github.com/nltk/nltk) python library which contains a lot of corpora that can be used to train and test some NLP models.
 
 First of all, we download the annotated corpus:
 ```python
@@ -261,7 +261,7 @@ def build_model(input_dim, hidden_neurons, output_dim):
 
 ### Creating a wrapper between Keras API and Scikit-Learn
 
-[`Keras`](https://github.com/fchollet/keras/) provides a wrapper called [`KerasClassifier`](https://keras.io/scikit-learn-api/) which implements the Scikit-Learn classifier interface. 
+[`Keras`](https://github.com/fchollet/keras/) provides a wrapper called [`KerasClassifier`](https://keras.io/scikit-learn-api/) which implements the [Scikit-Learn](http://scikit-learn.org/stable/) classifier interface. 
 
 All model parameters are defined below.
 We need to provide a function that returns the structure of a neural network (`build_fn`). 

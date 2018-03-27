@@ -387,4 +387,4 @@ This saves the architecture of the model, the weights as well as the training co
 - _Improving neural networks by preventing co-adaptation of feature detectors_: [[paper]](https://arxiv.org/abs/1207.0580)  
 
 In this post, you learn how to define and evaluate accuracy of a neural network for multi-class classification using the Keras library.  
-The script used to illustrate this post is provided [here](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/scripts/pos_tagging_neural_nets_keras.py).
+The script used to illustrate this post is provided here : [[.py](https://github.com/Cdiscount/IT-Blog/blob/master/scripts/pos_tagging_neural_nets_keras.py)|[.ipynb](https://github.com/Cdiscount/IT-Blog/blob/master/scripts/pos_tagging_neural_nets_keras.ipynb)].

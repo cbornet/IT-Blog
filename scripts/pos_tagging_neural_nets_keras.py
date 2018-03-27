@@ -101,7 +101,7 @@ def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc)
     orange = '#FFA577'
 
     with plt.xkcd():
-        fig, ax1 = plt.subplots()
+        fig, (ax1, ax2) = plt.subplots(2, figsize=(10, 8))
         ax1.plot(range(1, len(train_loss) + 1), train_loss, green, linewidth=5,
                  label='training')
         ax1.plot(range(1, len(train_val_loss) + 1), train_val_loss, orange,
@@ -110,8 +110,8 @@ def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc)
         ax1.set_ylabel('loss')
         ax1.tick_params('y')
         ax1.legend(loc='upper right', shadow=False)
+        ax1.set_title('Model loss through #epochs', fontweight='bold')
 
-        fig, ax2 = plt.subplots()
         ax2.plot(range(1, len(train_acc) + 1), train_acc, green, linewidth=5,
                  label='training')
         ax2.plot(range(1, len(train_val_acc) + 1), train_val_acc, orange,
@@ -120,6 +120,10 @@ def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc)
         ax2.set_ylabel('accuracy')
         ax2.tick_params('y')
         ax2.legend(loc='lower right', shadow=False)
+        ax2.set_title('Model accuracy through #epochs', fontweight='bold')
+
+    plt.tight_layout()
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -173,15 +177,15 @@ if __name__ == '__main__':
 
     # Set model parameters
     model_params = {
-    'build_fn': build_model,
-    'input_dim': X_train.shape[1],
-    'hidden_neurons': 512,
-    'output_dim': y_train.shape[1],
-    'epochs': 5,
-    'batch_size': 256,
-    'verbose': 1,
-    'validation_data': (X_val, y_val),
-    'shuffle': True
+        'build_fn': build_model,
+        'input_dim': X_train.shape[1],
+        'hidden_neurons': 512,
+        'output_dim': y_train.shape[1],
+        'epochs': 5,
+        'batch_size': 256,
+        'verbose': 1,
+        'validation_data': (X_val, y_val),
+        'shuffle': True
     }
 
     # Create a new sklearn classifier

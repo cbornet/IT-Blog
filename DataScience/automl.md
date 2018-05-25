@@ -4,7 +4,7 @@
 ## What is AutoML and why do we need it?
 Auto ML is the fact of simplifying data science projects by automating the machine learning tasks. The figure below presents a classical machine learning pipeline for supervised learning tasks.
 
-![Machine learning process](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/ML_process.PNG "Figure 1: A machine learning process.")
+![Machine learning process](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/ML_process.png "Figure 1: A machine learning process.")
 
 In the process presented above, several blocks have to be tuned to extract most of the predictive power of the data: 
 * First of all, you have to select relevant data that potentially explain the target you want to predict.

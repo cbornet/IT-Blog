@@ -130,7 +130,7 @@ For each challenge, we plotted the metric value depending on the ranking of the 
 * number of samples: 891 in the training set, 418 in the test set
 * baseline: predictions based on gender (men die and women survive)
 
-![Titanic challenge benchmark](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/bench_titanic_graph.PNG "Figure 4: Titanic challenge benchmark.")
+![Titanic challenge benchmark](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/bench_titanic_graph.png "Figure 4: Titanic challenge benchmark.")
 
 This curve shows for instance that the top 20% solutions reached more than 80% accuracy.
 
@@ -141,7 +141,7 @@ This curve shows for instance that the top 20% solutions reached more than 80% a
 * number of samples: 42000 in the training set, 28000 in the test set
 * baseline: k nearest neighbors with k=1
 
-![MNIST challenge benchmark](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/bench_mnist_graph.PNG "Figure 5: MNIST challenge benchmark.")
+![MNIST challenge benchmark](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/bench_mnist_graph.png "Figure 5: MNIST challenge benchmark.")
 
 **House prices (regression):**
 * metric: *root mean squared error (RMSE)*
@@ -150,7 +150,7 @@ This curve shows for instance that the top 20% solutions reached more than 80% a
 * number of samples: 1460 in the training set, 1459 in the test set
 * baseline: linear regression (area, number of bedrooms, year and month of sale)
 
-![House prices challenge benchmark](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/bench_house_price_graph.PNG "Figure 6: House prices challenge benchmark.")
+![House prices challenge benchmark](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/automl/bench_house_price_graph.png "Figure 6: House prices challenge benchmark.")
 
 ## Conclusion
 In practice, the open source frameworks needed some data preparation and cleaning (binarization, null values handling...). Only commercial solutions offer the complete pipeline, from features engineering to models deployment.

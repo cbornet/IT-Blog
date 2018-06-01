@@ -42,7 +42,7 @@ And how we display the time taken for each component in Grafana with a simple Pr
 avg by (component) (irate(react_prerender_seconds[1m]))
 ```
 
-![rendering timing](../images/SRE/prometheus_mobile_website/cdiscount_grafana_react)
+![rendering timing](../images/SRE/prometheus_mobile_website/cdiscount_grafana_react.png)
 
 When you have knowledge of the underlying services behind each component, it really is a huge help in finding the root cause for an incident. For example if you notice a spike for the `ProductScene` component, you know it's probably because of this legacy service behind it. Instrumenting our logic in key places is really helpful in lowering our MTTR. 
 

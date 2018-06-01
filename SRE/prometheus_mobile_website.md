@@ -22,7 +22,7 @@ Prometheus is an open-source monitoring system that can collect, process and sto
 
 Our first deployment was a single virtual machine that was used for fetching metrics and displaying data in Grafana. We configured it to discover Marathon services and crawl containers at they came and went. More on how we scaled it at the end of the article.
 
-## Good instrumentation is primary !
+## Good instrumentation is mandatory !
 
 Once we had Prometheus up and running, we were able to instrument our rendering service written in NodeJS with the help of [`prom-client`](https://github.com/siimon/prom-client) and set up the usual metrics, HTTP responses, CPU heap, garbage collector and more. What we did though was implementing custom metrics like the time we take to render a React component. Instrumenting is so simple that we actually encourage our development teams to write their own custom metrics as long as they are meaningful and sensible.
 
@@ -61,16 +61,16 @@ All those metrics helped us deliver with confidence and make the new mobile site
 
 As word got out that we were experimenting with a new monitoring solution, many teams came to us wanting to expose and display metrics. Right now, SRE is the only team alongside the mobile website's team using Prometheus (in parallel with the legacy Zabbix system) as we are trying to find the perfect architecture for it to provide the best service to our internal clients.
 
-Currently, we follow the federated pattern with a deployment by environment and datacenter: we have several sharded crawler instances that scrapes a few hundreds targets (including containers) every 30s and with a set of +200 rules, normalizes and downsamples to the minute metrics for the "masters" instances. 
+Currently, we follow the federated pattern with a deployment by environment and datacenter: we have several sharded crawler instances that scrape a few hundreds targets (including containers) every 30s and with a set of +200 rules, normalize and downsample to the minute metrics for the "masters" instances. 
 
 ![](../images/SRE/prometheus_mobile_website/cdiscount_prometheus_architecture.png)
 
-We also have instrumented many services like our Varnish clusters, HAProxy services, Ceph storage, Fluentd systems and we are working on many more. The easiness of adding new services to Prometheus and the myriad of available exporters are one of the major arguments for this technology. We also started writing custom exporters for some other parts and we're working on open sourcing them.
+We also have instrumented many services like our Varnish clusters, HAProxy services, Ceph storage, Fluentd systems and we are working on many more integrations. The easiness of adding new services to Prometheus and the myriad of available exporters are one of the major arguments for this technology. We also started writing custom exporters for some other parts of our infrastructure and we're working on open sourcing them.
 We are currently following the new [Thanos](https://github.com/improbable-eng/thanos) project with a close eye and are trying it out, this is a very promising project.
 
 ## Causing a cultural change
 
-Technology isn't everything. In pure DevOps spirit, Prometheus not only gave us insights on our stack, but it also improved the relationship between developers and operations teams as more metrics were implemented and more parts of the system instrumented. We often sit down with people wanting new metrics added and this allow us to work out their needs and the business needs behind this request. This allow us to build trust with people in our operational capabilities and anticipate new projects coming in.
+Technology isn't everything. In pure DevOps spirit, Prometheus not only gave us insights on our stack, but it also improved the relationship between developers and operations teams as more metrics were implemented and more parts of the system instrumented. We often sit down with people wanting new metrics added and this allow us to work out their needs and the business needs behind this request. This allow us to build trust with our colleagues in our operational capabilities and anticipate new projects coming in.
 
 We are not done with improving our observability capabilities as we are working on improving our dashboards, releasing a mutual logging platform for the company and looking into tracing. Stay tuned for more news on our journey ! If you are interested in those challenges, [we are recruiting](https://emploi.cdiscount.com/offre/ingenieur-devops-hf/) :smile:. 
 

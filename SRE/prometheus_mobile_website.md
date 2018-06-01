@@ -72,5 +72,5 @@ We are currently following the new [Thanos](https://github.com/improbable-eng/th
 
 Technology isn't everything. In pure DevOps spirit, Prometheus not only gave us insights on our stack, but it also improved the relationship between developers and operations teams as more metrics were implemented and more parts of the system instrumented. We often sit down with people wanting new metrics added and this allow us to work out their needs and the business needs behind this request. This allow us to build trust with people in our operational capabilities and anticipate new projects coming in.
 
-We are not done with improving our observability capabilities as we are working on improving our dashboards, releasing a mutual logging platform for the company and looking into tracing. Stay tuned for more news on our journey ! If you are interested in those challenges, we are recruiting :smile:. 
+We are not done with improving our observability capabilities as we are working on improving our dashboards, releasing a mutual logging platform for the company and looking into tracing. Stay tuned for more news on our journey ! If you are interested in those challenges, [we are recruiting](https://emploi.cdiscount.com/offre/ingenieur-devops-hf/) :smile:. 
 

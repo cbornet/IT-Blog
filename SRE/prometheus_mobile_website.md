@@ -55,7 +55,7 @@ We are currently working on standardizing ingress and egress metrics so that we 
 Monitoring the technological system in production is only the beginning of the process, we set out to instrument our CI/CD pipeline in order to follow our code quality, build queue, and tests runs as changes were coming through. We even wrote a custom exporter for business metrics (orders, transformation rates and the like) so that we could correlate a change with a business impact. 
 
 In the end we were able to roll out parts after parts of the mobile website into the hands of our customers, reacting quickly when incidents arose and we passed with success the Black Friday rush (biggest day of the year).
-All those metrics helped us deliver with confidence and make the new mobile site project a success as it now drives 40% of the company revenue. And yes, we also monitor this value via Prometheus :wink:. 
+All those metrics helped us deliver with confidence and make the new mobile site project a success as it now drives 40% of the company revenue. And yes, we also monitor this value via Prometheus 😉. 
 
 ## Scaling Prometheus
 
@@ -72,5 +72,5 @@ We are currently following the new [Thanos](https://github.com/improbable-eng/th
 
 Technology isn't everything. In pure DevOps spirit, Prometheus not only gave us insights on our stack, but it also improved the relationship between developers and operations teams as more metrics were implemented and more parts of the system instrumented. We often sit down with people wanting new metrics added and this allow us to work out their needs and the business needs behind this request. This allow us to build trust with our colleagues in our operational capabilities and anticipate new projects coming in.
 
-We are not done with improving our observability capabilities as we are working on improving our dashboards, releasing a mutual logging platform for the company and looking into tracing. Stay tuned for more news on our journey ! If you are interested in those challenges, [we are recruiting](https://emploi.cdiscount.com/offre/ingenieur-devops-hf/) :smile:. 
+We are not done with improving our observability capabilities as we are working on improving our dashboards, releasing a mutual logging platform for the company and looking into tracing. Stay tuned for more news on our journey ! If you are interested in those challenges, [we are recruiting](https://emploi.cdiscount.com/offre/ingenieur-devops-hf/) 😊. 
 

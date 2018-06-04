@@ -3,7 +3,7 @@
 
 At Cdiscount, we always love finding new tools and technologies that can help us oversee our platform, understand what's happening and prevent outages. Last year while working on our new mobile website, the new architecture challenged our operational team in understanding and monitoring those new components.
 
-![](../images/SRE/prometheus_mobile_website/cdiscount_smartphone_home.png)
+![](https://cdn.rawgit.com/Cdiscount/IT-Blog/1773872f/images/SRE/prometheus_mobile_website/cdiscount_smartphone_home.png)
 
 Historically, we've been using Zabbix to manage our supervision, alerts and on-call duties for a few thousands servers across two datacenters in a mostly static architecture. With the move to Docker and Mesos/Marathon (an alternative container orchestration platform) and the new mobile website project, we were challenged by the development team with providing meaningful metrics to them so they could perform better deployments, analyze the performance of their new platform and maintain operational excellence. Here's how the SRE team helped them out.
 
@@ -12,7 +12,7 @@ Historically, we've been using Zabbix to manage our supervision, alerts and on-c
 We have seen in the last few years a noticeable grow in mobile shopping. The old legacy website wasn't good enough now considering that we needed to be fast, able to deliver features more quickly and be mobile first. 
 We designed a frontend written in React that is server-side rendered (for SEO and performance purposes) via a NodeJS service that communicate with a set of new microservices written in Java.
 
-![](../images/SRE/prometheus_mobile_website/cdiscount_smartphone_simple_architecture.png)
+![](https://cdn.rawgit.com/Cdiscount/IT-Blog/1773872f/images/SRE/prometheus_mobile_website/cdiscount_smartphone_simple_architecture.png)
 
 While working on the project, we quickly found out we were flying in blind with this new platform and that we needed to be able to observe this new system in order to reliably and confidently exploit and deliver this project. The dedicated team SRE engineer (we'll write another article explaining how we help other teams deliver better products through DevOps) went out on a mission to overcome this challenge and we chose Prometheus for this. 
 
@@ -42,7 +42,7 @@ And how we display the time taken for each component in Grafana with a simple Pr
 avg by (component) (irate(react_prerender_seconds[1m]))
 ```
 
-![rendering timing](../images/SRE/prometheus_mobile_website/cdiscount_grafana_react.png)
+![rendering timing](https://cdn.rawgit.com/Cdiscount/IT-Blog/1773872f/images/SRE/prometheus_mobile_website/cdiscount_grafana_react.png)
 
 When you have knowledge of the underlying services behind each component, it really is a huge help in finding the root cause for an incident. For example if you notice a spike for the `ProductScene` component, you know it's probably because of this legacy service behind it. Instrumenting our logic in key places is really helpful in lowering our MTTR. 
 
@@ -63,7 +63,7 @@ As word got out that we were experimenting with a new monitoring solution, many 
 
 Currently, we follow the federated pattern with a deployment by environment and datacenter: we have several sharded crawler instances that scrape a few hundreds targets (including containers) every 30s and with a set of +200 rules, normalize and downsample to the minute metrics for the "masters" instances. 
 
-![](../images/SRE/prometheus_mobile_website/cdiscount_prometheus_architecture.png)
+![](https://cdn.rawgit.com/Cdiscount/IT-Blog/1773872f/images/SRE/prometheus_mobile_website/cdiscount_prometheus_architecture.png)
 
 We also have instrumented many services like our Varnish clusters, HAProxy services, Ceph storage, Fluentd systems and we are working on many more integrations. The easiness of adding new services to Prometheus and the myriad of available exporters are one of the major arguments for this technology. We also started writing custom exporters for some other parts of our infrastructure and we're working on open sourcing them.
 We are currently following the new [Thanos](https://github.com/improbable-eng/thanos) project with a close eye and are trying it out, this is a very promising project.

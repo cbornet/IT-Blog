@@ -5,7 +5,7 @@ At Cdiscount, we always love finding new tools and technologies that can help us
 
 ![](../images/SRE/prometheus_mobile_website/cdiscount_smartphone_home.png)
 
-Historically, we've been using Zabbix to manage our supervising, alerting and on-call duties for a few thousands servers across two datacenters in a mostly static architecture. With the move to Docker and Mesos/Marathon (an alternative container orchestration platform) and the new mobile website project, we were challenged by the development team with providing meaningful metrics to them so they could perform better deployments, analyze the performance of their new platform and maintain operational excellence. Here's how the SRE team helped them out.
+Historically, we've been using Zabbix to manage our supervision, alerts and on-call duties for a few thousands servers across two datacenters in a mostly static architecture. With the move to Docker and Mesos/Marathon (an alternative container orchestration platform) and the new mobile website project, we were challenged by the development team with providing meaningful metrics to them so they could perform better deployments, analyze the performance of their new platform and maintain operational excellence. Here's how the SRE team helped them out.
 
 ## A new architecture for mobile first customers 
 

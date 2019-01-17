@@ -29,7 +29,7 @@ C’est pour cela qu’il nous fallait créer un système permettant d'identifie
 
 - Analyse temps réel.
 
-- Ne pas avoir d'incidence sur temps de réponse des sites.
+- Ne pas avoir d'incidence sur le temps de réponse des sites.
 
 - Applicable au site PC aussi bien qu’au site mobile.
 
@@ -62,7 +62,7 @@ Les serveurs OpenResty effectuent deux tâches :
 
 - Ils transmettent les informations utiles de la requête à un service de traitement de flux d’événements temps réel (Kafka) via des collecteurs Fluentd.
 
-Fluentd a été choisi pour ses très bonnes performances et sa capacité à chiffrer la donnée.
+Fluentd a été choisi pour ses très bonnes performances, sa capacité à chiffrer la donnée et son connecteur Kafka.
 
 Le service de traitement de flux d’événements est composé de plusieurs [Kafka Streams](https://kafka.apache.org/documentation/streams/)(Les Kafka Streams sont des micros services qui traitent le flux de données en continu, ils sont distribués et extensibles) déployés dans un Kubernetes :
 
@@ -82,7 +82,7 @@ Les données qui y sont stockées sont utilisées pour détecter a posteriori de
 En parallèle, un service “Monitoring Kafka Stream” permet de faire du monitoring sur le flux et de consulter l'état du trafic (volume, nombre de bots détectés...) via des dashboards Grafana.
 
 Nous avons choisi Kafka et Kafka Streams, pour leur aspect temps réel et leur rapidité.
-Nous avons choisi Mongodb pour son mode clé document et sa gestion des TTL (durée de vie).
+Nous avons choisi MongoDB pour son mode clé document et sa gestion des TTL (durée de vie).
 
 Le [Model H2O](https://www.h2o.ai/)[^5] est généré à partir d’un jeu de données extraites du Datalake.
 Il est ensuite nécessaire qu’un humain détecte manuellement les bots pour que le modèle soit efficace.

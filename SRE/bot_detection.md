@@ -1,6 +1,6 @@
 # Pourquoi avons-nous conçu un détecteur de bot pour notre site de e-commerce
 
-![](../images/RD/Botdetection.svg)
+![](../images/SRE/botdetection/Botdetection.svg)
 
 [[TOC]]
 
@@ -46,7 +46,7 @@ C’est pour cela qu’il nous fallait créer un système permettant d'identifie
 Pour détecter un bot, l’unique source d’information est la requête HTTP.
 Il faut donc pouvoir analyser et essayer de classifier cette requête.
 
-![](../images/RD/flux.svg)
+![](../images/SRE/botdetection/flux.svg)
 
 _Le schéma d'infrastructure_
 

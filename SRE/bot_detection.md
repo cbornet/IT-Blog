@@ -1,10 +1,11 @@
-# Pourquoi avons-nous conçu un détecteur de bot pour notre site de e-commerce
+# Détection de bots
 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/SRE/botdetection/Botdetection.png)
 
 
+# Pourquoi avons-nous conçu un détecteur de bots pour notre site de e-commerce ?
 
-## Contexte
+## Contexte :
 
 Comme beaucoup de sites internet, de nombreux bots [^1] parcourent le site de Cdiscount.
 Il y en a de plusieurs types :
@@ -41,7 +42,7 @@ C’est pour cela qu’il nous fallait créer un système permettant d'identifie
 
 - Prioriser le trafic pour les utilisateurs.
 
-# Comment avons-nous conçu un détecteur de bot pour notre site de e-commerce
+# Comment avons-nous conçu un détecteur de bots pour notre site de e-commerce ?
 
 Pour détecter un bot, l’unique source d’information est la requête HTTP.
 Il faut donc pouvoir analyser et essayer de classifier cette requête.
@@ -60,11 +61,11 @@ Les serveurs OpenResty effectuent deux tâches :
 
 - Ils vérifient si on est en présence d’un bot via une base de données clé-valeur.
 
-- Ils transmettent les informations utiles de la requête à un service de traitement de flux d’événements temps réel (Kafka) via des collecteurs Fluentd.
+- Ils transmettent les informations utiles de la requête à un service de traitement de flux d’événements temps réel (Kafka) via des collecteurs [Fluentd](https://www.fluentd.org/).
 
 Fluentd a été choisi pour ses très bonnes performances, sa capacité à chiffrer la donnée et son connecteur Kafka.
 
-Le service de traitement de flux d’événements est composé de plusieurs [Kafka Streams](https://kafka.apache.org/documentation/streams/)(Les Kafka Streams sont des micros services qui traitent le flux de données en continu, ils sont distribués et extensibles) déployés dans un Kubernetes :
+Le service de traitement de flux d’événements est composé de plusieurs [Kafka Streams](https://kafka.apache.org/documentation/streams/) (Les Kafka Streams sont des micros services qui traitent le flux de données en continu, ils sont distribués et extensibles) déployés dans un Kubernetes :
 
 - un premier service “Enrich Kafka Stream” permet d’enrichir le log et de le simplifier (le type de page et de ressource, la localisation de l’IP, le type de device [de terminal], si c’est un client connu et s’il a déjà commandé)
 
@@ -72,7 +73,7 @@ Le service de traitement de flux d’événements est composé de plusieurs [Kaf
 Sur une fenêtre de temps, on vient compter pour chaque Fingerprint [^4] le nombre de requêtes effectuées.
 On a donc par exemple x requêtes sur la page d’accueil, x sur des fiches produits, x sur des images...
 
-- le troisième permet “Bot Tagging Kafka Stream”, à partir de règles statiques et d’un modèle d’apprentissage automatique [H2O](https://www.h2o.ai/), de prédire si un utilisateur est légitime ou si c’est un bot.
+- le troisième service “Bot Tagging Kafka Stream” permet, à partir de règles statiques et d’un modèle d’apprentissage automatique [H2O](https://www.h2o.ai/), de prédire si un utilisateur est légitime ou si c’est un bot.
 Dans le cas d’un bot, on va écrire son Fingerprint et sa catégorie (Couleur) dans une base de données MongoDB.
 Il sera écrit avec un TTL pour ne pas bloquer trop longtemps un faux positif.
 

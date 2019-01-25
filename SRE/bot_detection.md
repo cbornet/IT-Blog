@@ -7,7 +7,7 @@
 
 ## Contexte :
 
-Comme beaucoup de sites internet, de nombreux bots [^1] parcourent le site de Cdiscount.
+Comme beaucoup de sites internet, de nombreux bots[^1] parcourent le site de Cdiscount.
 Il y en a de plusieurs types :
 
 - les bots des moteurs de recherche : ils indexent le web.
@@ -51,7 +51,7 @@ Il faut donc pouvoir analyser et essayer de classifier cette requête.
 
 _Le schéma d'infrastructure_
 
-Pour récupérer les informations contenues dans la requête HTTP, nous avons utilisé [OpenResty](https://openresty.org/), une distribution de Nginx avec support de Lua [^2]) en mode "reverse proxy"[^3].
+Pour récupérer les informations contenues dans la requête HTTP, nous avons utilisé [OpenResty](https://openresty.org/), une distribution de Nginx avec support de Lua[^2]) en mode "reverse proxy"[^3].
 Le support de Lua nous permet d'étendre facilement les fonctionnalités du serveur web.
 Nous avons ainsi pu personnaliser les données à récupérer de l'access log (le format de base ne convenait pas : certaines informations n'étaient pas nécessaires comme les cookies de l'AB testing alors d'autres étaient manquante comme la géolocalisation).
 Le support de Lua permet de filtrer beaucoup plus finement les données envoyées à analyser et on peut également changer la configuration de filtrage des serveurs OpenResty à chaud.
@@ -70,7 +70,7 @@ Le service de traitement de flux d’événements est composé de plusieurs [Kaf
 - un premier service “Enrich Kafka Stream” permet d’enrichir le log et de le simplifier (le type de page et de ressource, la localisation de l’IP, le type de device [de terminal], si c’est un client connu et s’il a déjà commandé)
 
 - le second service “Stats Aggregator Kafka Stream” permet de créer des statistiques sur les visites.
-Sur une fenêtre de temps, on vient compter pour chaque Fingerprint [^4] le nombre de requêtes effectuées.
+Sur une fenêtre de temps, on vient compter pour chaque Fingerprint[^4] le nombre de requêtes effectuées.
 On a donc par exemple x requêtes sur la page d’accueil, x sur des fiches produits, x sur des images...
 
 - le troisième service “Bot Tagging Kafka Stream” permet, à partir de règles statiques et d’un modèle d’apprentissage automatique [H2O](https://www.h2o.ai/), de prédire si un utilisateur est légitime ou si c’est un bot.

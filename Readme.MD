@@ -119,7 +119,7 @@ git push
 ####### TODO --> Captures écrans WordPress
 ```
 
-* Se Connecter sur le site le blog avec votre identifiant de domaine,
+* Se connecter sur le site le blog avec votre identifiant de domaine,
 
 ![Connection](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/connect.png)
 
@@ -146,8 +146,8 @@ git push
 
 ![Lien l'article à github](https://github.com/Cdiscount/IT-Blog/raw/master/images/readme/markdown_file_path.png)
 
-* Publiez votre Article en mode Draft,
-* Faites relire votre article par un autre redacteur du blog,
+* Publier votre Article en mode Draft,
+* Faire relire votre article par un autre redacteur du blog,
 
 NB: Afin d'alimenter le blog régulièrement il est préférable d'échelonner la publication des articles. Si vous avez 2 articles à publier, veuillez espacer la publication d'au moins 1 jour.
 

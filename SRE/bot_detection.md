@@ -24,6 +24,7 @@ ils leur permettent de s’aligner sur le prix d’une promotion ou de détecter
 La plupart des bots ne sont pas nocifs pour Cdiscount, certains sont même voulus et recherchés, comme ceux des moteurs de recherche (Google, Bing...), qui permettent à Cdiscount d'apparaître en tête des résultats de recherche.
 Mais en cumulé, il y a parfois plus de trafic sur le site généré par des bots que par des visiteurs ce qui représente un coût pour l’infrastructure.
 Des bots vraiment agressifs pourraient notamment rendre le site indisponible lors d'événements importants comme le Black Friday en générant plus de trafic qu'à l'habitude.
+Les solutions existantes sur le marché ne nous permettaient pas d'avoir un réglage suffisamment fin sur les bots et nous ne voulions surtout pas bloquer un utilisateur ou un bot qui passe une commande.
 C’est pour cela qu’il nous fallait créer un système permettant d'identifier le trafic provenant de bots pour traiter différemment les requêtes effectuées par les humains de celles effectuées par des bots potentiellement malveillants.
 
 ## Les enjeux

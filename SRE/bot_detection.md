@@ -52,7 +52,7 @@ Il faut donc pouvoir analyser et essayer de classifier cette requête.
 
 _Le schéma d'infrastructure_
 
-Pour récupérer les informations contenues dans la requête HTTP, nous avons utilisé [OpenResty](https://openresty.org/), une distribution de Nginx avec support de Lua[^2]) en mode "reverse proxy"[^3].
+Pour récupérer les informations contenues dans la requête HTTP, nous avons utilisé [OpenResty](https://openresty.org/) (une distribution de Nginx avec support de Lua[^2]) en mode "reverse proxy"[^3].
 Le support de Lua nous permet d'étendre facilement les fonctionnalités du serveur web.
 Nous avons ainsi pu personnaliser les données à récupérer de l'access log (le format de base ne convenait pas : certaines informations n'étaient pas nécessaires comme les cookies de l'AB testing alors d'autres étaient manquante comme la géolocalisation).
 Le support de Lua permet de filtrer beaucoup plus finement les données envoyées à analyser et on peut également changer la configuration de filtrage des serveurs OpenResty à chaud.

@@ -75,7 +75,9 @@ Cdiscount tient via son ADN commerçante à maintenir un cérémonial d’ouvert
 
 Toute la stack est alors sollicitée, et la bonne utilisation du cache est essentielle. 
 
-Le Content Delivery Network (CDN) se retrouve en charge de livrer les assets cachés le plus rapidement possible : images, css, js, une partie du html. Historiquement nous avons utilisé les acteurs du marché afin d’optimiser la vitesse de livraison de nos pages. Fin 2016 lors de la migration HTTPS et HTTP2, nous avons décidé d’aller plus loin et de reprendre en main la technologie en créant notre solution maison, sur deux pops basés à Paris et à Bordeaux. Basé sur des outils open source type Varnish, il embarque un mini cluster base sur un orchestrateur de conteneur. Le CDN est prévu pour expulser 5 Gb/s en pic. 
+Le Content Delivery Network (CDN) se retrouve en charge de livrer les assets cachés le plus rapidement possible : images, css, js, une partie du html. Historiquement nous avons utilisé les acteurs du marché afin d’optimiser la vitesse de livraison de nos pages. Fin 2016 lors de la migration HTTPS et HTTP2, nous avons décidé d’aller plus loin et de reprendre en main la technologie en créant notre solution maison, sur deux pops basés à Paris et à Bordeaux. Basé sur des outils open source type Varnish, il embarque un mini cluster base sur un orchestrateur de conteneur. Le CDN est prévu pour expulser 5 Gb/s en pic.
+
+ 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/archi_cdn.PNG "L'architecture des briques open source de notre CDN")
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/flux_cdn.PNG "Les flux vers l'infra")
 

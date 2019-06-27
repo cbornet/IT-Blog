@@ -6,12 +6,8 @@ Environ 1500 mots, 5 minutes de lecture
 Cdiscount vit au rythme des grands évènements commerciaux de l’année : soldes d’hiver, french days, soldes d’été, black friday, et Noël.  A chaque évènement l’enjeux pour Cdiscount se compte en centaines de millions d’euro de flux. 
 
 Ces périodes sont essentielles pour notre activité : 
-
- 
-
-Pour nos marchands internes et nos partenaires de la marketplace, qui proposent des offres attractives sur le site, afin de maximiser leur chiffre d’affaire 
-
-Pour nos clients grand public à la recherche des bonnes affaires 
+- Pour nos marchands internes et nos partenaires de la marketplace, qui proposent des offres attractives sur le site, afin de maximiser leur chiffre d’affaire 
+- Pour nos clients grand public à la recherche des bonnes affaires 
 
 Les soldes ont la particularité de répondre à un calendrier imposé par l’Etat, valable pour tous les marchands en ligne sur une même période. Afin d’imposer une concurrence équitable entre les magasins physique et les marchands en ligne, pas question d'afficher des promotions avant l’heure, c’est la Loi !  
 

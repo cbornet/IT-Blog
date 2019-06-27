@@ -23,7 +23,8 @@ D’expérience nous savons que la première action est de lister toutes les tâ
 Pour ces soldes nous avons arbitré de lancer quelques actions techniques spécifiques d’optimisation de notre SI :
 
 #### Encaisser les HIT sans scaler l’infra 
-Mise en place des ETag sur les documents et les images, afin d’améliorer le temps de réponse et d’affichage des internautes qui naviguent sur notre site, et de moins solliciter notre infrastructure, tout en garantissant des informations à jour dans le navigateur client. La page est livrée avec des instructions d’expiration de cache, et un hash de la ressource. Ces hash sont renvoyés à chaque demande de ressource expirée par le navigateur, et notre back se charge de vérifier si une évolution a eu lieu depuis la dernière livraison au client. Si aucune modification n’a été apportée, un HTTP 304 (au lieu d’un 200) est renvoyé au browser du client en quelques dizaines de milli secondes, évitant un nouveau téléchargement complet qui aurait été plus long. 
+Mise en place des ETag sur les documents et les images, afin d’améliorer le temps de réponse et d’affichage des internautes qui naviguent sur notre site, et de moins solliciter notre infrastructure, tout en garantissant des informations à jour dans le navigateur client. La page est livrée avec des instructions d’expiration de cache, et un hash de la ressource. Ces hash sont renvoyés à chaque demande de ressource expirée par le navigateur, et notre back se charge de vérifier si une évolution a eu lieu depuis la dernière livraison au client. Si aucune modification n’a été apportée, un HTTP 304 (au lieu d’un 200) est renvoyé au browser du client en quelques dizaines de milli secondes, évitant un nouveau téléchargement complet qui aurait été plus long.
+ 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/304.PNG "Le serveur ne renvoit pas la ressource mais un code 304")
 
 Google propose une [explication complète](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=fr) et détaillée des avantages 
@@ -32,6 +33,7 @@ Google propose une [explication complète](https://developers.google.com/web/fun
 Les .PNG voient leur espace colorimétrique adapté en fonction de leur taille, pour un gain d’environ 10% en poids, et autant en temps de décodage. Encore quelques centaines de ko de gagné sur le poids du front, et en ms de temps de décodage processeur, ce qui raccourci le time to interactive. Un article détaillé permet de mieux appréhender le concept sous-jacent, mais l’idée est bien de comprendre que la différence est imperceptible pour nos utilisateurs. :)
 
 A gauche l’image “non optimisée” sur un espace colorimétrique étendu, à droite la nouvelle. Re générer à la volée ces images permet aussi d’y aposer un ETag, pour faire coup double 
+
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/optim_images.PNG "L'optimisation permet de baisser le poids des images sans dégrader la qualité")
 
 #### Intégrer plus d’offres, plus vite 

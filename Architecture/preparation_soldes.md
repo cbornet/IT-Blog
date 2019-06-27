@@ -3,7 +3,7 @@
 Environ 1500 mots, 5 minutes de lecture  
 
 ## Les soldes, un des moments forts de la vie marchande
-Cdiscount vit au rythme des grands évènements commerciaux de l’année : soldes d’hiver, french days, soldes d’été, black friday, et Noël.  A chque évènement l’enjeux pour Cdiscount se compte en centaines de millions d’euro de flux. 
+Cdiscount vit au rythme des grands évènements commerciaux de l’année : soldes d’hiver, french days, soldes d’été, black friday, et Noël.  A chaque évènement l’enjeux pour Cdiscount se compte en centaines de millions d’euro de flux. 
 
 Ces périodes sont essentielles pour notre activité : 
 
@@ -28,7 +28,7 @@ Pour ces soldes nous avons arbitré de lancer quelques actions techniques spéci
 
 ### Encaisser les HIT sans scaler l’infra 
 Mise en place des ETag sur les documents et les images, afin d’améliorer le temps de réponse et d’affichage des internautes qui naviguent sur notre site, et de moins solliciter notre infrastructure, tout en garantissant des informations à jour dans le navigateur client. La page est livrée avec des instructions d’expiration de cache, et un hash de la ressource. Ces hash sont renvoyés à chaque demande de ressource expirée par le navigateur, et notre back se charge de vérifier si une évolution a eu lieu depuis la dernière livraison au client. Si aucune modification n’a été apportée, un HTTP 304 (au lieu d’un 200) est renvoyé au browser du client en quelques dizaines de milli secondes, évitant un nouveau téléchargement complet qui aurait été plus long. 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/304.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/304.png "Le serveur ne renvoit pas la ressource mais un code 304")
 
 Google propose une [explication complète](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=fr) et détaillée des avantages 
 
@@ -36,7 +36,7 @@ Google propose une [explication complète](https://developers.google.com/web/fun
 Les .png voient leur espace colorimétrique adapté en fonction de leur taille, pour un gain d’environ 10% en poids, et autant en temps de décodage. Encore quelques centaines de ko de gagné sur le poids du front, et en ms de temps de décodage processeur, ce qui raccourci le time to interactive. Un article détaillé permet de mieux appréhender le concept sous-jacent, mais l’idée est bien de comprendre que la différence est imperceptible pour nos utilisateurs. :)
 
 A gauche l’image “non optimisée” sur un espace colorimétrique étendu, à droite la nouvelle. Re générer à la volée ces images permet aussi d’y aposer un ETag, pour faire coup double 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/optim_images.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/optim_images.png "L'optimisation permet de baisser le poids des images sans dégrader la qualité")
 
 ### Intégrer plus d’offres, plus vite 
 Intégration des mises à jour des offres de nos marchands sur le cluster RabbitMQ. Le vieux pooling SQL a vécu et a rendu de fiers services pour nous permettre de gérer 200 millions de mise à jour produits par jour. Pour atteindre la vitesse supérieure nous passons sur un vrai système pub/sub ! 
@@ -76,8 +76,8 @@ Cdiscount tient via son ADN commerçante à maintenir un cérémonial d’ouvert
 Toute la stack est alors sollicitée, et la bonne utilisation du cache est essentielle. 
 
 Le Content Delivery Network (CDN) se retrouve en charge de livrer les assets cachés le plus rapidement possible : images, css, js, une partie du html. Historiquement nous avons utilisé les acteurs du marché afin d’optimiser la vitesse de livraison de nos pages. Fin 2016 lors de la migration HTTPS et HTTP2, nous avons décidé d’aller plus loin et de reprendre en main la technologie en créant notre solution maison, sur deux pops basés à Paris et à Bordeaux. Basé sur des outils open source type Varnish, il embarque un mini cluster base sur un orchestrateur de conteneur. Le CDN est prévu pour expulser 5 Gb/s en pic. 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/archi_cdn.png)
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/flux_cdn.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/archi_cdn.png "L'architecture des briques open source de notre CDN")
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/flux_cdn.png "Les flux vers l'infra")
 
 ## Résultat : encore un record de battu !
 
@@ -85,6 +85,6 @@ Encore un pci de charge tenue avec une QoS proche de 100% ! Quelques ajustements
 
 Le pic a été bien dessiné dès l’ouverture, battant un nouveau record ! 
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/record_visites.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/record_visites.png "Record battu !")
 
 Le site va pour mes prochaines semaines rester en mode soldes, et nous reviendrons en mode "normal” le 06 août.  

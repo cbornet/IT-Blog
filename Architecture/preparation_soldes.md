@@ -51,7 +51,7 @@ Pendant les tests de charge plusieurs axes sont alors supervisés
 
 - Via dynatrace pour la tenue à la charge notre back office legacy en .Net, de nos micro services en .Net core 
 - Via zabbix pour les observables liée à la partie infra : CPU/RAM etc 
-- via Thanos outil interne pour le suivi de logs 
+- via Elasticsearch outil  pour le suivi de logs 
 
 Dès la fin des tests, les goulets d’étranglement sont identifiés et transformés en ticket, dont une certaine partie passe alors dans les pipes expedites des équipes concernées. 
 
@@ -79,6 +79,9 @@ Le Content Delivery Network (CDN) se retrouve en charge de livrer les assets cac
 
  
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/archi_cdn.PNG "L'architecture des briques open source de notre CDN")
+
+Et le CDN est en coupure de tous les HIT arrivant sur l'infrastructure
+
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/flux_cdn.PNG "Les flux vers l'infra")
 
 ## Résultat : encore un record de battu !

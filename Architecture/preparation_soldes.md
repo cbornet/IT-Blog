@@ -6,12 +6,8 @@ Environ 1500 mots, 5 minutes de lecture
 Cdiscount vit au rythme des grands évènements commerciaux de l’année : soldes d’hiver, french days, soldes d’été, black friday, et Noël.  A chaque évènement l’enjeux pour Cdiscount se compte en centaines de millions d’euro de flux. 
 
 Ces périodes sont essentielles pour notre activité : 
-
- 
-
-Pour nos marchands internes et nos partenaires de la marketplace, qui proposent des offres attractives sur le site, afin de maximiser leur chiffre d’affaire 
-
-Pour nos clients grand public à la recherche des bonnes affaires 
+- Pour nos marchands internes et nos partenaires de la marketplace, qui proposent des offres attractives sur le site, afin de maximiser leur chiffre d’affaire 
+- Pour nos clients grand public à la recherche des bonnes affaires 
 
 Les soldes ont la particularité de répondre à un calendrier imposé par l’Etat, valable pour tous les marchands en ligne sur une même période. Afin d’imposer une concurrence équitable entre les magasins physique et les marchands en ligne, pas question d'afficher des promotions avant l’heure, c’est la Loi !  
 
@@ -26,25 +22,25 @@ D’expérience nous savons que la première action est de lister toutes les tâ
 
 Pour ces soldes nous avons arbitré de lancer quelques actions techniques spécifiques d’optimisation de notre SI :
 
-### Encaisser les HIT sans scaler l’infra 
+#### Encaisser les HIT sans scaler l’infra 
 Mise en place des ETag sur les documents et les images, afin d’améliorer le temps de réponse et d’affichage des internautes qui naviguent sur notre site, et de moins solliciter notre infrastructure, tout en garantissant des informations à jour dans le navigateur client. La page est livrée avec des instructions d’expiration de cache, et un hash de la ressource. Ces hash sont renvoyés à chaque demande de ressource expirée par le navigateur, et notre back se charge de vérifier si une évolution a eu lieu depuis la dernière livraison au client. Si aucune modification n’a été apportée, un HTTP 304 (au lieu d’un 200) est renvoyé au browser du client en quelques dizaines de milli secondes, évitant un nouveau téléchargement complet qui aurait été plus long. 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/304.PNG "Le serveur ne renvoit pas la ressource mais un code 304")
 
 Google propose une [explication complète](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=fr) et détaillée des avantages 
 
-### Optimiser le poids des images 
+#### Optimiser le poids des images 
 Les .PNG voient leur espace colorimétrique adapté en fonction de leur taille, pour un gain d’environ 10% en poids, et autant en temps de décodage. Encore quelques centaines de ko de gagné sur le poids du front, et en ms de temps de décodage processeur, ce qui raccourci le time to interactive. Un article détaillé permet de mieux appréhender le concept sous-jacent, mais l’idée est bien de comprendre que la différence est imperceptible pour nos utilisateurs. :)
 
 A gauche l’image “non optimisée” sur un espace colorimétrique étendu, à droite la nouvelle. Re générer à la volée ces images permet aussi d’y aposer un ETag, pour faire coup double 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/Architecture/preparation_soldes/optim_images.PNG "L'optimisation permet de baisser le poids des images sans dégrader la qualité")
 
-### Intégrer plus d’offres, plus vite 
+#### Intégrer plus d’offres, plus vite 
 Intégration des mises à jour des offres de nos marchands sur le cluster RabbitMQ. Le vieux pooling SQL a vécu et a rendu de fiers services pour nous permettre de gérer 200 millions de mise à jour produits par jour. Pour atteindre la vitesse supérieure nous passons sur un vrai système pub/sub ! 
 
-### Accueillir les clients en douceur 
+#### Accueillir les clients en douceur 
 Afin de maitriser l’arrivée massive des internautes sur notre site à l’heure H exacte du lancement des soldes, une gestion fine de l’ouverture progressive de nos services a été mise en place, permettant de lisser la charge de connexion sur une période courte de quelques minutes. En multi device nous sommes capables de piloter finement le ramp up d’accès des utilisateurs pour accéder aux offres, en proposant des pages parking hébergées sur Azure, le cloud de Microsoft.  
 
-### Prêts pour les tests de vérification de la tenue à la charge ! 
+#### Prêts pour les tests de vérification de la tenue à la charge ! 
 Un des éléments fort de la préparation vient de la planification des tests de charge : Le point central du pilotage du lancement des soldes. Cdiscount possède une infrastructure hors norme de plusieurs milliers de serveurs : pas question pour des raisons budgétaires et environnementales d’avoir une préproduction iso à la production. Nos tests ont donc lieu directement sur la production. Le seul créneau disponible est donc la nuit 
 
 Pendant les tests de charge plusieurs axes sont alors supervisés 

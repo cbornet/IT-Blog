@@ -1,6 +1,7 @@
 # Comment Apache Pulsar permet de créer un système de messaging résilient ?
 
 Chez Cdiscount, nous traitons d'importants volumes de données en temps réel grâce à des systèmes de messaging distribués. Pour nos besoins de diffusion d'événements, nous utilisons actuellement [Kafka](https://kafka.apache.org/ "Kafka") et pour nos besoins de queue, nous utilisons [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). En raison de la nature des données traitées par Cdiscount (commandes, paiements, etc...), il est impératif de garantir une très forte consistence des données (pas de doublons, pas de messages perdus) avec la plus grande disponibilité possible, même en cas de perte subite d'un de nos datacenters. Nous avions des difficultés à garantir ce niveau d'exigence avec Kafka et RabbitMQ et cela nous a amené à évaluer [Apache Pulsar](https://pulsar.apache.org/), la toute dernière technologie apparue récemment et qui met en avant de fortes promesses dans ce domaine.
+
 Pré-requis pour les tests: ce blog utilise [docker](https://docs.docker.com/install/) et [docker-compose](https://docs.docker.com/compose/install/) pour démarrer simplement
  les noeuds des clusters dans des conteneurs isolés.
 
@@ -53,7 +54,6 @@ Plusieurs configurations doivent être mises en place afin de mettre en place un
 - **_Rack Awareness_** : permet que les messages soient répliqués de façon synchrone sur des bookies appartenant à des racks différents.
 - **_Region Awareness_** : permet que les messages soient répliqués de façon synchrone sur des bookies appartenant à des régions différentes.
 - **_Read reordering_** : permet de privilégier la lecture des messages sur des bookies appartenant à la même région que le broker (lorque la fonctionnalité `Region Awareness` est utilisée)
----
 
 ### Démonstration avec Docker
 
@@ -61,11 +61,11 @@ Nous allons construire une architecture comprenant 2 datacenters avec chacun 2 b
 
 Le premier datacenter représentera la région **_eu_** où l'on retrouvera 2 brokers et 2 bookies qui seront préfixés par **_eu_**. Nous retrouverons la même configuration sur le deuxième datacenter qui représente la région **_us_**.
 
-Sur chaque région nous créerons un namespace en configuration active sur la région en question et passive sur l'autre. 
+Sur chaque région nous créerons un namespace en configuration active sur la région en question et passive sur l'autre.
+
+Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker).
 
 #### Configuration
-
-Récupérer le contenu du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker) et se placer à sa racine.
 
 Nous commençons par créer le cluster ZooKeeper:
 
@@ -163,7 +163,7 @@ Dans un autre terminal, nous produisons ensuite des messages sur le topic **_myt
 docker exec -it pulsar1-eu bin/pulsar-perf produce persistent://mytenant/eu/mytopic -u http://pulsar1-eu:8080 -r 100
 ```
 
-Sur [Grafana](http://localhost:3000/dashboard/file/bookkeeper.json), dans le dashboard **_bookeeper_** nous pouvons regarder le graphique **Write throughput** afin de vérifier sur quels bookies sont persistés les données.
+Sur Grafana, dans le [dashboard **_bookeeper_**](http://localhost:3000/dashboard/file/bookkeeper.json) nous pouvons regarder le graphique **Write throughput** afin de vérifier sur quels bookies sont persistés les données.
 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/produceRackAware.png)
 
@@ -231,9 +231,9 @@ Nous allons construire une architecture comprenant 2 clusters avec chacun 2 brok
 
 Le cluster **_cluster-eu_** sera dédié à la région **_eu_** et le cluster **_cluster-us_** sera dédié à la région **_us_**.
 
-#### Configuration
+Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker).
 
-Récupérer le contenu du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker) et se placer à sa racine.
+#### Configuration
 
 Nous commençons par créer le cluster ZooKeeper :
 

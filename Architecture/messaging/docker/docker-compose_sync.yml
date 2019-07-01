@@ -1,0 +1,162 @@
+version: "2.2"
+
+services:
+  bk1-eu:
+    hostname: bk1-eu
+    container_name: bk1-eu
+    image: apachepulsar/pulsar:2.3.0
+    expose: [8000]
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/bookkeeper.conf
+      && bin/pulsar bookie"
+    environment:
+      clusterName: mycluster
+      zkServers: zk
+      advertisedAddress: bk1-eu:3181
+      numAddWorkerThreads: 8
+      useHostNameAsBookieID: "true"
+
+  bk2-eu:
+    hostname: bk2-eu
+    container_name: bk2-eu
+    image: apachepulsar/pulsar:2.3.0
+    expose: [8000]
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/bookkeeper.conf
+      && bin/pulsar bookie"
+    environment:
+      clusterName: mycluster
+      zkServers: zk
+      advertisedAddress: bk2-eu:3181
+      numAddWorkerThreads: 8
+      useHostNameAsBookieID: "true"
+
+  bk1-us:
+    hostname: bk1-us
+    container_name: bk1-us
+    image: apachepulsar/pulsar:2.3.0
+    expose: [8000]
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/bookkeeper.conf
+      && bin/pulsar bookie"
+    environment:
+      clusterName: mycluster
+      zkServers: zk
+      advertisedAddress: bk1-us:3181
+      numAddWorkerThreads: 8
+      useHostNameAsBookieID: "true"
+
+  bk2-us:
+    hostname: bk2-us
+    container_name: bk2-us
+    image: apachepulsar/pulsar:2.3.0
+    expose: [8000]
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/bookkeeper.conf
+      && bin/pulsar bookie"
+    environment:
+      clusterName: mycluster
+      zkServers: zk
+      advertisedAddress: bk2-us:3181
+      numAddWorkerThreads: 8
+      useHostNameAsBookieID: "true"
+
+  pulsar1-eu:
+    hostname: pulsar1-eu
+    container_name: pulsar1-eu
+    image: apachepulsar/pulsar:2.3.0
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/broker.conf
+      && bin/pulsar broker"
+    expose: [8080, 6650]
+    environment:
+      clusterName: mycluster
+      zookeeperServers: zk
+      configurationStoreServers: zk:2181
+      bookkeeperClientRegionawarePolicyEnabled: "true"
+      bookkeeperClientReorderReadSequenceEnabled: "true"
+      webSocketServiceEnabled: "true"
+
+  pulsar2-eu:
+    hostname: pulsar2-eu
+    container_name: pulsar2-eu
+    image: apachepulsar/pulsar:2.3.0
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/broker.conf
+      && bin/pulsar broker"
+    expose: [8080, 6650]
+    environment:
+      clusterName: mycluster
+      zookeeperServers: zk
+      configurationStoreServers: zk:2181
+      bookkeeperClientRegionawarePolicyEnabled: "true"
+      bookkeeperClientReorderReadSequenceEnabled: "true"
+      webSocketServiceEnabled: "true"
+
+  pulsar1-us:
+    hostname: pulsar1-us
+    container_name: pulsar1-us
+    image: apachepulsar/pulsar:2.3.0
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/broker.conf
+      && bin/pulsar broker"
+    expose: [8080, 6650]
+    environment:
+      clusterName: mycluster
+      zookeeperServers: zk
+      configurationStoreServers: zk:2181
+      bookkeeperClientRegionawarePolicyEnabled: "true"
+      bookkeeperClientReorderReadSequenceEnabled: "true"
+      webSocketServiceEnabled: "true"
+
+  pulsar2-us:
+    hostname: pulsar2-us
+    container_name: pulsar2-us
+    image: apachepulsar/pulsar:2.3.0
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/broker.conf
+      && bin/pulsar broker"
+    expose: [8080, 6650]
+    environment:
+      clusterName: mycluster
+      zookeeperServers: zk
+      configurationStoreServers: zk:2181
+      bookkeeperClientRegionawarePolicyEnabled: "true"
+      bookkeeperClientReorderReadSequenceEnabled: "true"
+      webSocketServiceEnabled: "true"
+
+  prometheus:
+    image: prom/prometheus
+    hostname: prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/config:/etc/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    expose: [9090]
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: apachepulsar/pulsar-grafana:2.3.0
+    hostname: grafana
+    container_name: grafana
+    expose: [3000]
+    ports:
+      - 3000:3000
+    environment:
+      PROMETHEUS_URL: "http://prometheus:9090"
+    volumes:
+      - ./grafana/dashboards/bookkeeper.json:/var/lib/grafana/dashboards/bookkeeper.json
+      - ./grafana/dashboards/topic.json:/var/lib/grafana/dashboards/topic.json
+      - ./grafana/dashboards/zookeeper.json:/var/lib/grafana/dashboards/zookeeper.json
+
+

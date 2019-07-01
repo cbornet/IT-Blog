@@ -1,0 +1,14 @@
+version: "2.2"
+
+services:
+  zk:
+    hostname: zk
+    container_name: zk
+    image: apachepulsar/pulsar:2.3.0
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/zookeeper.conf
+      && bin/pulsar zookeeper"
+    environment:
+      ZOOKEEPER_SERVERS: zk
+    expose: [2181, 8000]

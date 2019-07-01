@@ -65,7 +65,7 @@ Sur chaque région nous créerons un namespace en configuration active sur la r�
 
 #### Configuration
 
-Récupérer le contenu du dossier [docker](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/docker) et se placer à sa racine.
+Récupérer le contenu du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker) et se placer à sa racine.
 
 Nous commençons par créer le cluster ZooKeeper:
 
@@ -233,7 +233,7 @@ Le cluster **_cluster-eu_** sera dédié à la région **_eu_** et le cluster **
 
 #### Configuration
 
-Récupérer le contenu du dossier [docker](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/docker) et se placer à sa racine.
+Récupérer le contenu du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker) et se placer à sa racine.
 
 Nous commençons par créer le cluster ZooKeeper :
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Comment Apache Pulsar permet de créer un système de messaging résilient"
 author: 
-categories: [ fr, cloud ]
+categories:
 image:
 hidden: true
 ---

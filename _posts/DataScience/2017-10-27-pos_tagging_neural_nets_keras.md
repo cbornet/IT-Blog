@@ -3,7 +3,7 @@ layout: post
 title:  "Part-of-Speech tagging tutorial with the Keras Deep Learning library"
 author: axel.bellec
 categories: [ en, data science ]
-image:
+image: "assets/images/DataScience/pos_tagging_neural_nets_keras/blog.jpg"
 ---
 > In this tutorial, you will see how you can use a simple Keras model to train and evaluate an artificial neural network for multi-class classification problems. 
 

@@ -1,8 +1,12 @@
-# Python profiling
-
+---
+layout: post
+title:  "Python profiling"
+author: julien.jouganous
+categories: [ en, data science ]
+image:
+---
 _Bruno Goutorbe, Chief Data Scientist at Cdiscount_<br>
 _Julien Jouganous, Data Scientist at Cdiscount_
-
 
 Sometimes, computational performances become a crucial point in production algorithms.
 That's especially true in data science where proof of concept pieces of code can have a poor scalability in terms of computation time as well as resource (CPU, memory) use.

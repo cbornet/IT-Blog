@@ -1,5 +1,10 @@
-# Visual search
-
+---
+layout: post
+title:  "Visual search"
+author: guillaume.dechriste
+categories: [ en, data science ]
+image:
+---
 _Guillaume Dechriste, Data Scientist at Cdiscount_
 
 It might sometimes be complicated for a customer to translate his tastes or purchase intents into words to be typed into a search engine.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Encaisser des centaines de millions de Hit : les soldes chez Cdiscount"
-author: fabienpoletti
-categories: [ events ]
+author: fabien.poletti
+categories: [ fr, events ]
 image: "assets/images/Architecture/preparation_soldes/record_visites.PNG"
 ---
 _Environ 1500 mots, 5 minutes de lecture_

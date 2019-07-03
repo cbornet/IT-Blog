@@ -11,7 +11,7 @@ There are multiple ways to overcome this type of issues, but before pulling out 
 
 This presentation (in french) gives a quick overview of the profiling tools we use in the data science team.
 
-[![link to the slides](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/profilage_python.png)](https://www.slideshare.net/slideshow/embed_code/key/4iZepiEL7QPNf3)
+[![link to the slides]({{ site.baseurl }}/assets/images/DataScience/profilage_python.png)](https://www.slideshare.net/slideshow/embed_code/key/4iZepiEL7QPNf3)
 
 The script used to illustrate the slides is provided [here](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/scripts/similar_products.py).
 

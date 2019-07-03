@@ -9,4 +9,4 @@ A few deep learning algorithms were designed to this aim. This presentation prop
 
 Enjoy!
 
-[![link to the slides](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/visual_search.png)](https://www.slideshare.net/slideshow/embed_code/key/tj34WW8ARTirxy)
+[![link to the slides]({{ site.baseurl }}/assets/images/DataScience/visual_search.png)](https://www.slideshare.net/slideshow/embed_code/key/tj34WW8ARTirxy)

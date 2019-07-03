@@ -7,7 +7,7 @@ So, we decided to spend a little of our time on a Kaggle challenge, namely, [_Qu
 
 The challenge took place from March 16<sup>th</sup> to June 6<sup>th</sup>, 2017. We came around quite late, about one month after it started, so we mostly ran after the score andfinished in the top 8%. Here:
  
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/kaggle-quora-final-ranking.png "Final ranking")
+![]({{ site.baseurl }}/assets/images/DataScience/kaggle-quora-final-ranking.png "Final ranking")
 
 ## The challenge
 

@@ -3,7 +3,7 @@ layout: post
 title:  "A quick experience feedback about the Cdiscount image classification Kaggle competition"
 author: julien.jouganous
 categories: [ en, data science ]
-image:
+image: "assets/images/DataScience/feedback_kaggle/feedback_kaggle2017_blog.jpg"
 ---
 
 ## Introduction: 

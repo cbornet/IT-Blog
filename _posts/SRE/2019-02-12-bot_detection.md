@@ -2,7 +2,7 @@
 layout: post
 title:  "Détection de bots"
 author: david.bourasseau
-categories: [ fr, events ]
+categories: [ fr, cloud ]
 image: "assets/images/SRE/botdetection/Botdetection.png"
 ---
 # Pourquoi avons-nous conçu un détecteur de bots pour notre site de e-commerce ?

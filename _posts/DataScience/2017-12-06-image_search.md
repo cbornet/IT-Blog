@@ -3,7 +3,7 @@ layout: post
 title:  "Visual search"
 author: guillaume.dechriste
 categories: [ en, data science ]
-image:
+image: "assets/images/DataScience/visual_search_blog.jpg"
 ---
 _Guillaume Dechriste, Data Scientist at Cdiscount_
 

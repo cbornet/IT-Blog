@@ -3,7 +3,7 @@ layout: post
 title:  "How Prometheus helped roll out with confidence our new mobile site to millions of customers"
 author: adrien.fillon
 categories: [ en, cloud ]
-image:
+image: "assets/images/SRE/prometheus_mobile_website/prometheus_blog.png"
 ---
 At Cdiscount, we always love finding new tools and technologies that can help us oversee our platform, understand what's happening and prevent outages. Last year while working on our new mobile website, the new architecture challenged our operational team in understanding and monitoring those new components.
 

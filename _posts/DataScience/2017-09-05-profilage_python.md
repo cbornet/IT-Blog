@@ -3,7 +3,7 @@ layout: post
 title:  "Python profiling"
 author: julien.jouganous
 categories: [ en, data science ]
-image:
+image: "assets/images/DataScience/python_profiling_blog.jpg"
 ---
 _Bruno Goutorbe, Chief Data Scientist at Cdiscount_<br>
 _Julien Jouganous, Data Scientist at Cdiscount_

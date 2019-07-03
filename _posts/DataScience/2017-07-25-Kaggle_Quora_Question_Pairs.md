@@ -3,10 +3,8 @@ layout: post
 title:  "Our participation to the Kaggle challenge: Quora Question Pairs"
 author: bruno.goutorbe
 categories: [ en, data science ]
-image:
+image: "assets/images/DataScience/kaggle-quora-blog.jpg"
 ---
-_Bruno Goutorbe_<br>
-_Chief Data Scientist at Cdiscount_
 
 So, we decided to spend a little of our time on a Kaggle challenge, namely, [_Quora Question Pairs_](https://www.kaggle.com/c/quora-question-pairs). (By "we", I mean the data scientists of Cdiscount.) The purpose of the challenge consisted in detecting duplicate questions, that is, pairs of questions carrying the same meaning. This is of interest to us, as we work on loosely related issues: for exemple, we need to detect algorithmically duplicate products in our catalog(which contains more than 20 million active items) or to match themagainst competitors' catalogs.
 

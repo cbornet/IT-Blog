@@ -82,7 +82,7 @@ We split our tagged sentences into 3 datasets :
 - a __test dataset__ used *only* to assess the performance of the classifier.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/train_test_val.png" alt="train_test_val_split"/>
+  <img src="{{ site.baseurl }}/assets/images/DataScience/pos_tagging_neural_nets_keras/train_test_val.png" alt="train_test_val_split"/>
 </div>
 
 We use approximately 60% of the tagged sentences for training, 20% as the validation set and 20% to evaluate our model.
@@ -225,7 +225,7 @@ y_val = np_utils.to_categorical(y_val)
 [`Keras`](https://github.com/fchollet/keras/) is a high-level framework for designing and running neural networks on multiple backends like [`TensorFlow`](https://github.com/tensorflow/tensorflow/), [`Theano`](https://github.com/Theano/Theano) or [`CNTK`](https://github.com/Microsoft/CNTK).
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/keras.png" alt="keras_logo"/>
+  <img src="{{ site.baseurl }}/assets/images/DataScience/pos_tagging_neural_nets_keras/keras.png" alt="keras_logo"/>
 </div>
 
 We want to create one of the most basic neural networks: the Multilayer Perceptron. This kind of linear stack of layers can easily be made with the `Sequential` model. This model will contain an input layer, an hidden layer, and an output layer.   
@@ -336,11 +336,11 @@ plot_model_performance(
 ```
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/loss.png" alt="loss"/>
+  <img src="{{ site.baseurl }}/assets/images/DataScience/pos_tagging_neural_nets_keras/loss.png" alt="loss"/>
 </div>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/accuracy.png" alt="accuracy"/>
+  <img src="{{ site.baseurl }}/assets/images/DataScience/pos_tagging_neural_nets_keras/accuracy.png" alt="accuracy"/>
 </div>
 
 After 2 epochs, we see that our model begins to overfit. 
@@ -368,7 +368,7 @@ plot_model(clf.model, to_file='model.png', show_shapes=True)
 ```
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/pos_tagging_neural_nets_keras/model.png" alt="model"/>
+  <img src="{{ site.baseurl }}/assets/images/DataScience/pos_tagging_neural_nets_keras/model.png" alt="model"/>
 </div>
 
 ### Save the Keras model

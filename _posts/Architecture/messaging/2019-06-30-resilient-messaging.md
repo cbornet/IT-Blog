@@ -50,7 +50,7 @@ Nous allons mettre en place un cluster Pulsar étendu sur 2 régions/datacenters
 
 En cas de panne du datacenter actif, les brokers du datacenter passif deviennent automatiquement utilisables pour publier/consommer des messages. Comme il n'y a qu'un seul cluster Pulsar, la bascule est transparente pour les clients.
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/namespace_isolation.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/namespace_isolation.png)
 
 Plusieurs configurations doivent être mises en place afin de mettre en place un Pulsar actif/passif synchrone :
 
@@ -67,7 +67,7 @@ Le premier datacenter représentera la région **_eu_** où l'on retrouvera 2 br
 
 Sur chaque région nous créerons un namespace en configuration active sur la région en question et passive sur l'autre.
 
-Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker).
+Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](./docker).
 
 #### Configuration
 
@@ -169,13 +169,13 @@ docker exec -it pulsar1-eu bin/pulsar-perf produce persistent://mytenant/eu/myto
 
 Sur Grafana, dans le [dashboard **_bookeeper_**](http://localhost:3000/dashboard/file/bookkeeper.json) nous pouvons regarder le graphique **Write throughput** afin de vérifier sur quels bookies sont persistés les données.
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/produceRackAware.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/produceRackAware.png)
 
 Nous voyons ici que les données sont écrites sur les bookies **_bk1-eu_** et **_bk1-us_**, les données sont stockées sur un bookie de chaque région.
 
 Nous pouvons également vérifier ce qui se passe lors de la consommation sur le grahique **Read throughput".
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/consumeLocal.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/consumeLocal.png)
 
 Lors de la consommation les données sont lues sur le bookie de la même région que le client et qui a persisté la donnée, ici **_bk1_eu_**.
 
@@ -188,9 +188,9 @@ docker stop bk1-eu
 ```
 
 Le bookie n'étant plus disponible, le topic est sous-répliqué. BookKeeper possède un mécanisme d'[auto-réparation](https://bookkeeper.apache.org/docs/latest/admin/autorecovery/) qui va automatiquement répliquer les données du topic sur le nouveau bookie utilisé dans la région active **_bk2-eu_** pour rétablir le quorum d'écriture. C'est pourquoi après la perte de **_bk1-eu_** (à 13h44), on observe un pic d'écriture sur **_bk2-eu_** et un pic de lecture sur **_bk1-us_**. 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/perteBK1_write.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/perteBK1_write.png)
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/pertebk1_read.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/pertebk1_read.png)
 
 Pendant le temps de l'auto-réparation, le client consomme les messages sur **_bk1-us_**. Une fois que **_bk2-eu_** a répliqué les données, le client consomme les messages sur ce dernier.
 
@@ -218,7 +218,7 @@ docker-compose -f docker-compose_zk.yml down
 
 La [géo-réplication](https://pulsar.apache.org/docs/en/administration-geo/) est une réplication asynchrone des messages entre clusters d'une instance Pulsar. Elle permet aux consommateurs d'un cluster de recevoir les messages produits sur un autre cluster.
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/GeoReplication.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/GeoReplication.png)
 
 Sur ce diagramme, que ce soient les producers P1, P2 ou P3 qui produisent sur le topic T1 sur les clusters C1, C2 ou C3, les messages sont répliqués entre les différents clusters. Une fois répliqués, les consumers C1 et C2 peuvent traiter les messages sur leur cluster respectif.
 
@@ -347,11 +347,11 @@ Il faut toutefois noter quelques inconvénients:
 * Les brokers passifs peuvent être considérés comme une resource provisionnée mais inutilisée. Toutefois ces resources n'ont besoin d'être démarrées en permanence que si l'on cherche le maximum de disponibilité. Si une perte momentannée de disponibilité est acceptable en cas de bascule, on peut envisager de ne démarrer ces brokers que quand une bascule est détectée. On peut même utiliser des resources payées à l'utilisation dans le Cloud qui ne seront utilisées que pendant la bascule.
 * Puisqu'on ne valide un message produit que lorsqu'il a été répliqué sur l'autre région, cela introduit une latence à l'écriture. Cette latence additionnelle peut-être un frein pour certaines applications et il faudra alors choisir entre une consistence très forte des données et la performance d'écriture.
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/activeActive.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/activeActive.png)
 
 En cas de perte de la région EU, la bascule se fait automatiquement vers la région US:
 
-![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/basculePulsar.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/basculePulsar.png)
 
 ## Conclusion
 

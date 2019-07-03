@@ -15,9 +15,9 @@ The challenge concluded a few days ago (on December 14, 2017) and promises were 
 
 Results are very impressive as the winner *bestfitting* (currently No.1 at kaggle global ranking) reached **79.6%** accuracy on the private leaderboard and more than 120 competitors overcame 70% of correct categorization (see **Figure 2** below).
 
-![timeline](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/feedback_kaggle/kpi_evol.PNG "Figure 1: Evolution of top accuracy and number of teams involved")
+![timeline]({{ site.baseurl }}/assets/images/DataScience/feedback_kaggle/kpi_evol.PNG "Figure 1: Evolution of top accuracy and number of teams involved")
 
-![Figure 2](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/feedback_kaggle/scores.png "Figure 2: scores distribution") 
+![Figure 2]({{ site.baseurl }}/assets/images/DataScience/feedback_kaggle/scores.png "Figure 2: scores distribution") 
 
 ## Strategies used:
 
@@ -43,11 +43,11 @@ A particularity of the data set is that we provided up to 4 pictures per product
 
 Examples are provided below:
 
-![Figure 3](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/feedback_kaggle/1st_img_better_480.png "Figure 3: the first picture seems informative enough.")
+![Figure 3]({{ site.baseurl }}/assets/images/DataScience/feedback_kaggle/1st_img_better_480.png "Figure 3: the first picture seems informative enough.")
 
-![Figure 4](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/feedback_kaggle/differents_angles.png "Figure 4: all pictures are informative.")
+![Figure 4]({{ site.baseurl }}/assets/images/DataScience/feedback_kaggle/differents_angles.png "Figure 4: all pictures are informative.")
 
-![Figure 5](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/images/DataScience/feedback_kaggle/differents_envs.png "Figure 5: the first image doesn't seem the easiest to deal with because of the background.")
+![Figure 5]({{ site.baseurl }}/assets/images/DataScience/feedback_kaggle/differents_envs.png "Figure 5: the first image doesn't seem the easiest to deal with because of the background.")
 
 In the top raw (**Figure 3**), the first image seems to be the most relevant to predict the category. In the middle case (**Figure 4**), pictures are taken under distinct angles so we can believe that they are all informative. In the last raw (**Figure 5**), the first picture presents the item within its background which can make the classification task harder. Conversely the second one seems easier to process as there is no background. In the last two cases, using the whole set of images is probably more efficient than dealing with only one picture.
 

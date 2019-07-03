@@ -30,6 +30,30 @@ authors:
     web: https://www.wowthemes.net
     twitter: https://twitter.com/wowthemesnet
     description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
+  fabien.poletti:
+    name: Fabien Poletti
+    display_name: Fabien Poletti
+  david.bourasseau:
+    name: David Bourasseau
+    display_name: David Bourasseau
+  bruno.goutorbe:
+    name: Bruno Goutorbe
+    display_name: Bruno Goutorbe
+  adrien.fillon:
+    name: Adrien Fillon
+    display_name: Adrien Fillon
+  julien.jouganous:
+    name: Julien Jouganous
+    display_name: Julien Jouganous
+    description: Data Scientist at Cdiscount
+  axel.bellec:
+    name: Axel Bellec
+    display_name: Axel Bellec
+    description: Data Scientist at Cdiscount
+  guillaume.dechriste:
+    name: Guillaume Dechriste
+    display_name: Guillaume Dechriste
+    description: Data Scientist at Cdiscount
 
 # Plugins
 plugins:

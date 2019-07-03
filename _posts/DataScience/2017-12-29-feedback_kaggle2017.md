@@ -1,7 +1,10 @@
-# A quick experience feedback about the Cdiscount image classification Kaggle competition
-
-_Julien Jouganous, Data Scientist at Cdiscount_
-
+---
+layout: post
+title:  "A quick experience feedback about the Cdiscount image classification Kaggle competition"
+author: julien.jouganous
+categories: [ en, data science ]
+image:
+---
 
 ## Introduction: 
 Three months ago, we launched a data science competition on the famous [Kaggle](https://www.kaggle.com/) platform. The aim was to develop a product classifier based on image analysis. Indeed, our catalog is made up of more than 30 million products. Making sure they are all well classified is very challenging as well as crucial given that numerous critical algorithms (search engine ranking, product recommendation, *etc*) rely on product categorization.

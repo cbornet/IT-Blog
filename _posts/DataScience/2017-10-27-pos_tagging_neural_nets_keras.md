@@ -1,8 +1,10 @@
-# Part-of-Speech tagging tutorial with the Keras Deep Learning library
-
-_Axel BELLEC_  
-_Data Scientist at Cdiscount_
-
+---
+layout: post
+title:  "Part-of-Speech tagging tutorial with the Keras Deep Learning library"
+author: axel.bellec
+categories: [ en, data science ]
+image:
+---
 > In this tutorial, you will see how you can use a simple Keras model to train and evaluate an artificial neural network for multi-class classification problems. 
 
 Part-of-Speech tagging is a well-known task in [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing). It refers to the process of classifying words into their parts of speech (also known as words classes or lexical categories). This is a supervised learning approach.

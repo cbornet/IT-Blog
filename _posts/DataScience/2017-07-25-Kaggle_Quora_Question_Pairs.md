@@ -1,5 +1,10 @@
-# Our participation to the Kaggle challenge: Quora Question Pairs
-
+---
+layout: post
+title:  "Our participation to the Kaggle challenge: Quora Question Pairs"
+author: bruno.goutorbe
+categories: [ en, data science ]
+image:
+---
 _Bruno Goutorbe_<br>
 _Chief Data Scientist at Cdiscount_
 

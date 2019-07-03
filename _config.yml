@@ -1,13 +1,13 @@
 # Site
-name: "Mediumish"
-title: "Mediumish"
-description: "Jekyll template, Medium styled, free for bloggers."
+name: "Tech by Cdiscount"
+title: "Tech by Cdiscount"
+description: "A lot more technologies than you think"
 logo: 'assets/images/logo.png'
-favicon: 'assets/images/favicon.ico'
+favicon: 'assets/images/favicon.png'
 baseurl: /IT-Blog
-google_analytics: 'UA-xxxxxxx'
-disqus: 'demowebsite'
-mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+# TODO: google_analytics: 'UA-xxxxxxx'
+# TODO: disqus: 'xxxx'
+# TODO: mailchimp-list:
 include: ["_pages"]
 permalink: /:title/
 

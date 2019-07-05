@@ -1,6 +1,12 @@
+_Grégory Guichard, R & D Engineer at Cdiscount_ <br>
+_Romain Castagnet, DevOps Engineer at Cdiscount_ <br>
+_Christophe Bornet, R & D Manager at Cdiscount_
+
 # How Apache Pulsar allows to create a resilient messaging system?
 
-At Cdiscount, we process large volumes of real-time data through distributed messaging systems. For our event broadcasting needs, we currently use [Kafka](https://kafka.apache.org/ "Kafka") and for our queuing needs, we use [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). Due to the nature of the data processed by Cdiscount (orders, payments, etc ...), it is imperative to guarantee a very strong consistency of the data (no duplicates, no lost messages) with the greatest possible availability, even in case of sudden loss of one of our data centers. We had difficulties to guarantee this level of requirement with Kafka and RabbitMQ and this led us to evaluate [Apache Pulsar](https://pulsar.apache.org/), the latest technology that appeared recently and which highlights strong promises in this area. Prerequisites for testing: This blog uses [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) to simply start cluster nodes in isolated containers.
+At Cdiscount, we process large volumes of real-time data through distributed messaging systems. For our event broadcasting needs, we currently use [Kafka](https://kafka.apache.org/ "Kafka") and for our queuing needs, we use [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). Due to the nature of the data processed by Cdiscount (orders, payments, etc ...), it is imperative to guarantee a very strong consistency of the data (no duplicates, no lost messages) with the greatest possible availability, even in case of sudden loss of one of our data centers. We had difficulties to guarantee this level of requirement with Kafka and RabbitMQ and this led us to evaluate [Apache Pulsar](https://pulsar.apache.org/), the latest technology that appeared recently and which highlights strong promises in this area.
+
+Prerequisites for testing: This blog uses [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) to simply start cluster nodes in isolated containers.
 
 ## What is Pulsar?
 
@@ -45,9 +51,9 @@ We will implement an extended Pulsar cluster on 2 regions/datacenters with an ac
 3. The data is persistently synchronized on at least one bookie of the active datacenter and at least one bookie of the passive data center. Thus in case of loss of the active datacenter, the data will always be available on the second datacenter without the possibility of losing messages.
 4. During the consumption, the client connects to the broker owner of the topic, this broker will preferentially read the data on a bookie of the same region as him.
 
-In the event of active data center failure, passive data center brokers automatically become usable for publishing/consuming messages. Since there is only one Pulsar cluster, the flip-flop is transparent to the clients.
+In the event of active data center failure, passive data center brokers automatically become usable for publishing/consuming messages. Since there is only one Pulsar cluster, the failvoer is transparent to the clients.
 
-![](./namespace_isolation.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/namespace_isolation.png)
 
 Several configurations must be set up in order to set up a synchronous active/passive Pulsar:
 
@@ -89,7 +95,7 @@ Then we create brokers and bookies :
 docker-compose -f docker-compose_sync.yml up -d
 ```
 
-Then you have to define the regions and racks on which bookies and brokers will be placed thanks to the **_set-bookie-rack_** command.
+Then we have to define the regions and racks on which bookies and brokers will be placed thanks to the **_set-bookie-rack_** command.
 
 ```
 docker exec -it pulsar1-eu bin/pulsar-admin bookies set-bookie-rack -b bk1-eu:3181 -r eu/1
@@ -167,13 +173,13 @@ docker exec -it pulsar1-eu bin/pulsar-perf produce persistent://mytenant/eu/myto
 
 On [Grafana](http://localhost:3000/dashboard/file/bookkeeper.json), in the dashboard **_bookeeper_** we can look at the graph **Write throughput** to check on which bookies are persisted the data.
 
-![](produceRackAware.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/produceRackAware.png)
 
 We see here that the data are written on the bookies **_bk1-eu_** and **_bk1-us_**, the data are stored on a bookie of each region.
 
 We can also check what happens during consumption on the graph **Read throughput**.
 
-![](consumeLocal.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/consumeLocal.png)
 
 During the consumption the data are read on the bookie of the same region as the customer and which persisted the data, here **_bk1_eu_**.
 
@@ -186,11 +192,11 @@ docker stop bk1-eu
 ```
 
 The bookie is no longer available, the topic is under-replicated. BookKeeper has a [self-healing](https://bookkeeper.apache.org/docs/latest/admin/autorecovery/) mechanism that will automatically replicate the topic data on the new bookie used in the active region **_bk2-eu_** to restore the write quorum. This is why after the loss of **_bk1-eu_** (at 13:44), we observe a peak of writing on **_bk2-eu_** and a peak of reading on **_bk1-us_**.
-![](perteBK1_write.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/perteBK1_write.png)
 
-![](pertebk1_read.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/pertebk1_read.png)
 
-During the time of self-repair, the client consumes the messages on **_bk1-us_**. Once **_bk2-eu_** replicates the data, the client consumes the messages on it.
+During the time of self-healing, the client consumes the messages on **_bk1-us_**. Once **_bk2-eu_** replicates the data, the client consumes the messages on it.
 
 ##### Loss of a complete data center
 
@@ -216,7 +222,7 @@ docker-compose -f docker-compose_zk.yml down
 ### Presentation
 [Georeplication](https://pulsar.apache.org/docs/en/administration-geo/) is an asynchronous replication of messages between clusters of a Pulsar instance. It allows consumers in one cluster to receive messages produced on another cluster.
 
-![](GeoReplication.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/GeoReplication.png)
 
 In this diagram, whether the producers P1, P2 or P3 produce on the topic T1 on clusters C1, C2 or C3, the messages are replicated between the different clusters. Once replicated, consumers C1 and C2 can process the messages on their respective cluster.
 
@@ -334,20 +340,20 @@ docker-compose -f docker-compose_zk.yml down
 As we have seen, Pulsar namespaces and region-awareness features provide strong guarantees for message delivery while minimizing cross-datacenter exchanges with an active/passive cluster. But for our messaging needs, it was important to have active/active replication. To achieve this, we have combined synchronous replication and asynchronous geo-replication. This has several advantages:
 
 - Active/passive synchronous replication ensures that no messages are lost even if a datacenter is lost.
-- When switching to passive nodes, clients do not change cluster and therefore no subscription. There is therefore no need to have a complex mechanism to find the corresponding read index on the other cluster.
+- When switching to passive nodes, clients do not change cluster and therefore no subscription. There is no need to have a complex mechanism to find the corresponding read index on the other cluster.
 - In nominal mode, customers produce and consume on their own region that saves the bandwidth consumed between regions.
 - Geo-replication can receive all messages regardless of the cluster on which they were produced.
 
 However, there are some disadvantages:
 
-- Passive brokers can be considered as a provisioned but unused resource. However, these resources only need to be started permanently if we are looking for maximum availability. If a momentary loss of availability is acceptable in the event of a flip-flop, it is conceivable to start these brokers only when a flip-flop is detected. You can even use paid-for-use resources in the cloud that will only be used during the flip-flop.
+- Passive brokers can be considered as a provisioned but unused resource. However, these resources only need to be started permanently if we are looking for maximum availability. If a momentary loss of availability is acceptable in the event of a failover, it is conceivable to start these brokers only when a failover is detected. You can even use paid-for-use resources in the cloud that will only be used during the failover.
 - Since we only validate a message produced when it has been replicated to the other region, this introduces latency to writing. This additional latency may be a brake for some applications and it will then necessary to choose between a very strong consistency of the data and the writing performance.
 
-![](activeActive.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/activeActive.png)
 
 In case of loss of the EU region, the switch is automatically to the US region:
 
-![](basculePulsar.png)
+![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/basculePulsar.png)
 
 ## Conclusion
 

@@ -30,7 +30,7 @@ In the architecture of Pulsar, we find three components:
 
 Pulsar has several features that make it unique compared to other messaging systems:
 
-- **Event delivery but also Message Queue** : By allowing multiple consumer groups to have their own index on the message queue, Pulsar allows event broadcasting uses on the same principle as Kafka. But Pulsar can also validate the processing of messages individually without blocking the message queue (or partition) which is not supported by Kafka and it is essential for use as queing system.
+- **Event delivery but also Message Queue** : By allowing multiple consumer groups to have their own index on the message queue, Pulsar allows event broadcasting uses on the same principle as Kafka. But Pulsar can also validate the processing of messages individually without blocking the message queue (or partition) which is not supported by Kafka and it is essential for use as queuing system.
 
 - **Synchronous replication** : Synchronous replication is provided by BookKeeper and ensures the durability of messages even in case of loss of bookies. The rack-awareness feature ensures that messages are not acknowledged until they are written to nodes in separate data centers.
 
@@ -68,7 +68,7 @@ We will build an architecture with 2 datacenters, with 2 brokers and 2 bookies o
 
 The first datacenter represents the region where there will be 2 brokers and 2 bookies which will be prefixed by eu. We will find the same configuration on the second datacenter that represents the us region.
 
-On each region, we create a namespace in active configuration and a another one in passive mode.
+On each region, we create a namespace in active configuration and another one in passive mode.
 
 #### Configuration
 
@@ -340,7 +340,7 @@ docker-compose -f docker-compose_zk.yml down
 As we have seen, Pulsar namespaces and region-awareness features provide strong guarantees for message delivery while minimizing cross-datacenter exchanges with an active/passive cluster. But for our messaging needs, it was important to have active/active replication. To achieve this, we have combined synchronous replication and asynchronous geo-replication. This has several advantages:
 
 - Active/passive synchronous replication ensures that no messages are lost even if a datacenter is lost.
-- When switching to passive nodes, clients do not change cluster and therefore no subscription. There is no need to have a complex mechanism to find the corresponding read index on the other cluster.
+- When switching to passive nodes, clients do not change cluster and therefore their subscription. There is no need to have a complex mechanism to find the corresponding read index on the other cluster.
 - In nominal mode, customers produce and consume on their own region that saves the bandwidth consumed between regions.
 - Geo-replication can receive all messages regardless of the cluster on which they were produced.
 
@@ -351,7 +351,7 @@ However, there are some disadvantages:
 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/activeActive.png)
 
-In case of loss of the EU region, the switch is automatically to the US region:
+In case of loss of the EU region, the switch is done automatically to the US region:
 
 ![](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/Architecture/messaging/images/basculePulsar.png)
 

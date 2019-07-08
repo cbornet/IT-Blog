@@ -1,2 +1,7 @@
 .idea
 .spy*
+_site
+.DS_Store
+*.swp
+.sass-cache
+*~

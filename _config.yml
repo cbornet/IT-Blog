@@ -1,0 +1,111 @@
+# Site
+name: "Tech by Cdiscount"
+title: "Tech by Cdiscount"
+description: "A lot more technologies than you think"
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/favicon.png'
+baseurl: /IT-Blog
+google_analytics: 'UA-105824072-1'
+# TODO: disqus: 'xxxx'
+# TODO: mailchimp-list:
+include: ["_pages"]
+permalink: /:title/
+
+# Authors
+authors:
+  sal:
+    name: Sal
+    display_name: Sal
+    gravatar: e56154546cf4be74e393c62d1ae9f9d4
+    email: wowthemesnet@gmail.com
+    web: https://www.wowthemes.net
+    twitter: https://twitter.com/wowthemesnet
+    description: "Author of Mediumish, a Bootstrap Medium styled template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
+  john:
+    name: John
+    display_name: John
+    avatar: 'assets/images/avatar.png'
+    gravatar: b1cc14991db7a456fcd761680bbc8f81
+    email: wowthemesnet@gmail.com
+    web: https://www.wowthemes.net
+    twitter: https://twitter.com/wowthemesnet
+    description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
+  fabien.poletti:
+    name: Fabien Poletti
+    display_name: Fabien Poletti
+  david.bourasseau:
+    name: David Bourasseau
+    display_name: David Bourasseau
+    avatar: assets/images/authors/david.bourasseau.jpeg
+    web: https://www.linkedin.com/in/david-bourasseau/
+    description: R&D Engineer at Cdiscount
+  bruno.goutorbe:
+    name: Bruno Goutorbe
+    display_name: Bruno Goutorbe
+    description: Chief Data Scientist at Cdiscount
+  adrien.fillon:
+    name: Adrien Fillon
+    display_name: Adrien Fillon
+  julien.jouganous:
+    name: Julien Jouganous
+    display_name: Julien Jouganous
+    description: Data Scientist at Cdiscount
+    web: https://www.linkedin.com/in/julien-jouganous-647993124/
+  axel.bellec:
+    name: Axel Bellec
+    display_name: Axel Bellec
+    description: Data Scientist at Cdiscount
+    web: https://www.linkedin.com/in/axelbellec/
+  guillaume.dechriste:
+    name: Guillaume Dechriste
+    display_name: Guillaume Dechriste
+    description: Data Scientist at Cdiscount
+  baptiste.durand-bret:
+    name: Baptiste Durand-Bret
+    display_name: Baptiste Durand-Bret
+    description: SRE engineer at Cdiscount
+  guillaume.lefloch:
+    name: Guillaume Le Floch
+    display_name: Guillaume Le Floch
+    description: Data Scientist at Cdiscount
+    web: https://www.linkedin.com/in/guillaume-le-floch-b1b632138/
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+    
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+    
+# Pagination 
+paginate: 6
+paginate_path: /page:num/
+    
+# Other
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: "ca-pub-xxxxx"
+adsense-data-ad-slot: "xxxxxx"
+
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "disabled"
+
+exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock, docker-compose.yml]

@@ -50,10 +50,12 @@ authors:
     name: Julien Jouganous
     display_name: Julien Jouganous
     description: Data Scientist at Cdiscount
+    web: https://www.linkedin.com/in/julien-jouganous-647993124/
   axel.bellec:
     name: Axel Bellec
     display_name: Axel Bellec
     description: Data Scientist at Cdiscount
+    web: https://www.linkedin.com/in/axelbellec/
   guillaume.dechriste:
     name: Guillaume Dechriste
     display_name: Guillaume Dechriste
@@ -62,6 +64,11 @@ authors:
     name: Baptiste Durand-Bret
     display_name: Baptiste Durand-Bret
     description: SRE engineer at Cdiscount
+  guillaume.lefloch:
+    name: Guillaume Le Floch
+    display_name: Guillaume Le Floch
+    description: Data Scientist at Cdiscount
+    web: https://www.linkedin.com/in/guillaume-le-floch-b1b632138/
 
 # Plugins
 plugins:

@@ -5,11 +5,33 @@
 
 /* We need to add display:inline in order to align the '>>' of the 'read more' link */
 .post-excerpt p {
-	display:inline;
+  display: inline;
+}
+
+a.btn.btn-warning {
+  background-color: #f55c2d;
+  color: white;
+  border-radius: 50px;
+}
+a,
+a:hover {
+  color: #e43c03;
+}
+
+footer a {
+  color: gray;
+}
+.banniere {
+  margin-top: 57px;
+  border-top: 3px;
+  border-top-color: #e43c03 !important;
+  border-top-style: solid;
+}
+
+.home {
+  margin-top: 0px;
+  padding-top: 0.5rem;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-	"syntax",
-    "starsnonscss"
-;
+@import "syntax", "starsnonscss";

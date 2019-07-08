@@ -17,6 +17,6 @@ This presentation (in french) gives a quick overview of the profiling tools we u
 
 [![link to the slides]({{ site.baseurl }}/assets/images/DataScience/profilage_python.png)](https://www.slideshare.net/slideshow/embed_code/key/4iZepiEL7QPNf3)
 
-The script used to illustrate the slides is provided [here](https://raw.githubusercontent.com/Cdiscount/IT-Blog/master/scripts/similar_products.py).
+The script used to illustrate the slides is provided [here](https://github.com/Cdiscount/IT-Blog/blob/master/samples/DataScience/python-profiling/similar_products.py).
 
 See you soon!

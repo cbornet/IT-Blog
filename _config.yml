@@ -5,7 +5,7 @@ description: "A lot more technologies than you think"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.png'
 baseurl: /IT-Blog
-# TODO: google_analytics: 'UA-xxxxxxx'
+google_analytics: 'UA-105824072-1'
 # TODO: disqus: 'xxxx'
 # TODO: mailchimp-list:
 include: ["_pages"]

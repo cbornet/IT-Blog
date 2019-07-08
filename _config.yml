@@ -36,6 +36,9 @@ authors:
   david.bourasseau:
     name: David Bourasseau
     display_name: David Bourasseau
+    avatar: assets/images/authors/david.bourasseau.jpeg
+    web: https://www.linkedin.com/in/david-bourasseau/
+    description: R&D Engineer at Cdiscount
   bruno.goutorbe:
     name: Bruno Goutorbe
     display_name: Bruno Goutorbe
@@ -55,6 +58,10 @@ authors:
     name: Guillaume Dechriste
     display_name: Guillaume Dechriste
     description: Data Scientist at Cdiscount
+  baptiste.durand-bret:
+    name: Baptiste Durand-Bret
+    display_name: Baptiste Durand-Bret
+    description: SRE engineer at Cdiscount
 
 # Plugins
 plugins:

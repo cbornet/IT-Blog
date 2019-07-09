@@ -76,7 +76,7 @@ The first datacenter represents the region where there will be 2 brokers and 2 b
 
 On each region, we create a namespace in active configuration and another one in passive mode.
 
-The commands below are executed from the root of the [docker] folder (./ docker).
+The commands below are executed from the root of the [docker](https://github.com/Cdiscount/IT-Blog/tree/master/samples/Architecture/resilient-messaging/docker) folder.
 
 #### Configuration
 
@@ -247,7 +247,7 @@ We will build an architecture including 2 clusters with 2 brokers and 2 bookies,
 
 The cluster **_cluster-eu_** will be dedicated to the **eu** region and the cluster **_cluster-us_** will be dedicated to the **us** region.
 
-The commands below are executed from the root of the [docker] folder (./ docker).
+The commands below are executed from the root of the [docker](https://github.com/Cdiscount/IT-Blog/tree/master/samples/Architecture/resilient-messaging/docker) folder.
 
 #### Configuration
 

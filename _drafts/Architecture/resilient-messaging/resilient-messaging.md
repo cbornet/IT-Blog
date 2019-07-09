@@ -72,7 +72,7 @@ Le premier datacenter représentera la région **_eu_** où l'on retrouvera 2 br
 
 Sur chaque région nous créerons un namespace en configuration active sur la région en question et passive sur l'autre.
 
-Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](./docker).
+Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/samples/Architecture/resilient-messaging/docker).
 
 #### Configuration
 
@@ -240,7 +240,7 @@ Nous allons construire une architecture comprenant 2 clusters avec chacun 2 brok
 
 Le cluster **_cluster-eu_** sera dédié à la région **_eu_** et le cluster **_cluster-us_** sera dédié à la région **_us_**.
 
-Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/Architecture/messaging/docker).
+Les commandes ci-dessous sont à éxécuter depuis la racine du dossier [docker](https://github.com/Cdiscount/IT-Blog/tree/master/samples/Architecture/resilient-messaging/docker).
 
 #### Configuration
 

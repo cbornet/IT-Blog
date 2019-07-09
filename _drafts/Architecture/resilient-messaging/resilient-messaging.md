@@ -2,9 +2,8 @@
 layout: post
 title:  "Comment Apache Pulsar permet de créer un système de messaging résilient"
 author: 
-categories:
-image:
-hidden: true
+categories: [ fr, cloud ]
+image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
 ---
 
 _Grégory guichard, Ingénieur R&D chez Cdiscount_<br>
@@ -13,8 +12,7 @@ _Christophe Bornet, Responsable R&D chez Cdiscount_
 
 Chez Cdiscount, nous traitons d'importants volumes de données en temps réel grâce à des systèmes de messaging distribués. Pour nos besoins de diffusion d'événements, nous utilisons actuellement [Kafka](https://kafka.apache.org/ "Kafka") et pour nos besoins de queue, nous utilisons [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). En raison de la nature des données traitées par Cdiscount (commandes, paiements, etc...), il est impératif de garantir une très forte consistence des données (pas de doublons, pas de messages perdus) avec la plus grande disponibilité possible, même en cas de perte subite d'un de nos datacenters. Nous avions des difficultés à garantir ce niveau d'exigence avec Kafka et RabbitMQ et cela nous a amené à évaluer [Apache Pulsar](https://pulsar.apache.org/), la toute dernière technologie apparue récemment et qui met en avant de fortes promesses dans ce domaine.
 
-Pré-requis pour les tests: ce blog utilise [docker](https://docs.docker.com/install/) et [docker-compose](https://docs.docker.com/compose/install/) pour démarrer simplement
- les noeuds des clusters dans des conteneurs isolés.
+Pré-requis pour les tests: ce blog utilise [docker](https://docs.docker.com/install/) et [docker-compose](https://docs.docker.com/compose/install/) pour démarrer simplement les noeuds des clusters dans des conteneurs isolés.
 
 ## Qu'est ce que Pulsar ?
 
@@ -57,7 +55,7 @@ Nous allons mettre en place un cluster Pulsar étendu sur 2 régions/datacenters
 
 En cas de panne du datacenter actif, les brokers du datacenter passif deviennent automatiquement utilisables pour publier/consommer des messages. Comme il n'y a qu'un seul cluster Pulsar, la bascule est transparente pour les clients.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/namespace_isolation.png)
+![]({{ assets/images/Architecture/resilient-messaging/namespace_isolation.png | relative_url }})
 
 Plusieurs configurations doivent être mises en place afin de mettre en place un Pulsar actif/passif synchrone :
 

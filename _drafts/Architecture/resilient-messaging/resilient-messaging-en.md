@@ -2,8 +2,8 @@
 layout: post
 title: "How Apache Pulsar allows to create a resilient messaging system"
 author:
-categories:
-image:
+categories: [ en, cloud ]
+image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
 ---
 
 _Grégory Guichard, R&D Engineer at Cdiscount_ <br>
@@ -59,7 +59,7 @@ We will implement an extended Pulsar cluster on 2 regions/datacenters with an ac
 
 In the event of active data center failure, passive data center brokers automatically become usable for publishing/consuming messages. Since there is only one Pulsar cluster, the failvoer is transparent to the clients.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/namespace_isolation.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/namespace_isolation.png)
 
 Several configurations must be set up in order to set up a synchronous active/passive Pulsar:
 

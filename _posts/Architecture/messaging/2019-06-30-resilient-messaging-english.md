@@ -1,3 +1,12 @@
+---
+layout: post
+title: "How Apache Pulsar allows to create a resilient messaging system"
+author:
+categories:
+image:
+hidden: true
+---
+
 _Grégory Guichard, R & D Engineer at Cdiscount_ <br>
 _Romain Castagnet, DevOps Engineer at Cdiscount_ <br>
 _Christophe Bornet, R & D Manager at Cdiscount_

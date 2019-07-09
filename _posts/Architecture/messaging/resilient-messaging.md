@@ -4,7 +4,6 @@ title:  "Comment Apache Pulsar permet de créer un système de messaging résili
 author: 
 categories:
 image:
-hidden: true
 ---
 
 _Grégory guichard, Ingénieur R&D chez Cdiscount_<br>

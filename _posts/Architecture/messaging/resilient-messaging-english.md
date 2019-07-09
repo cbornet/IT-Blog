@@ -4,14 +4,11 @@ title: "How Apache Pulsar allows to create a resilient messaging system"
 author:
 categories:
 image:
-hidden: true
 ---
 
 _Grégory Guichard, R & D Engineer at Cdiscount_ <br>
 _Romain Castagnet, DevOps Engineer at Cdiscount_ <br>
 _Christophe Bornet, R & D Manager at Cdiscount_
-
-# How Apache Pulsar allows to create a resilient messaging system?
 
 At Cdiscount, we process large volumes of real-time data through distributed messaging systems. For our event broadcasting needs, we currently use [Kafka](https://kafka.apache.org/ "Kafka") and for our queuing needs, we use [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). Due to the nature of the data processed by Cdiscount (orders, payments, etc ...), it is imperative to guarantee a very strong consistency of the data (no duplicates, no lost messages) with the greatest possible availability, even in case of sudden loss of one of our data centers. We had difficulties to guarantee this level of requirement with Kafka and RabbitMQ and this led us to evaluate [Apache Pulsar](https://pulsar.apache.org/), the latest technology that appeared recently and which highlights strong promises in this area.
 

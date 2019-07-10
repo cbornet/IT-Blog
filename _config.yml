@@ -69,6 +69,9 @@ authors:
     display_name: Guillaume Le Floch
     description: Data Scientist at Cdiscount
     web: https://www.linkedin.com/in/guillaume-le-floch-b1b632138/
+  rd.team:
+    name: R&D team
+    display_name: R&D team
 
 # Plugins
 plugins:

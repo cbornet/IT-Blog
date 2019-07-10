@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Comment Apache Pulsar permet de créer un système de messaging résilient"
-author: 
+title:  "Concilier consistence forte des messages et résilience avec Apache Pulsar"
+author: rd.team
 categories: [ fr, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
 ---
@@ -55,7 +55,7 @@ Nous allons mettre en place un cluster Pulsar étendu sur 2 régions/datacenters
 
 En cas de panne du datacenter actif, les brokers du datacenter passif deviennent automatiquement utilisables pour publier/consommer des messages. Comme il n'y a qu'un seul cluster Pulsar, la bascule est transparente pour les clients.
 
-![]({{ assets/images/Architecture/resilient-messaging/namespace_isolation.png | relative_url }})
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/namespace_isolation.png }})
 
 Plusieurs configurations doivent être mises en place afin de mettre en place un Pulsar actif/passif synchrone :
 
@@ -63,6 +63,8 @@ Plusieurs configurations doivent être mises en place afin de mettre en place un
 - **_Rack Awareness_** : permet que les messages soient répliqués de façon synchrone sur des bookies appartenant à des racks différents.
 - **_Region Awareness_** : permet que les messages soient répliqués de façon synchrone sur des bookies appartenant à des régions différentes.
 - **_Read reordering_** : permet de privilégier la lecture des messages sur des bookies appartenant à la même région que le broker (lorque la fonctionnalité `Region Awareness` est utilisée)
+
+> Note: l'exposition des fonctionnalités `Region Awareness` et `Read Reordering` au projet Apache Pulsar est une contribution de Cdiscount.
 
 ### Démonstration avec Docker
 
@@ -306,7 +308,12 @@ Arrêtons la production sur le **_cluster-eu_** et lançons de la production sur
 docker exec -it pulsar1-us bin/pulsar-perf produce persistent://world/global/mytopic -u http://pulsar1-us:8080 -r 10
 ```
 
-Nous pouvons aussi créer une souscription sur le topic **_mytopic_** sur le **_cluster-us_** (NB: les souscriptions sur les clusters sont indépendantes, il n'y a pas de "souscription globale"). Dans un troisième terminal:
+Nous pouvons aussi créer une souscription sur le topic **_mytopic_** sur le **_cluster-us_**
+
+> Note: les souscriptions sur les clusters sont indépendantes, il n'y a pas de "souscription globale".
+> Au moment de la publication de cet article, Pulsar 2.4.0 vient de sortir avec une fonctionnalité de [réplication des souscriptions](https://pulsar.apache.org/blog/2019/07/05/Apache-Pulsar-2-4-0/#replicated-subscription). Cela permet de basculer un consommateur sur le cluster répliqué ce qui est très pratique si perdre quelques messages (lag de réplication des messages) et avoir quelques doublons (lag de réplication des souscriptions) lors d'une bascule est acceptable. Toutefois si une consistence forte est exigée, la réplication synchrone décrite plus haut reste la seule solution.
+
+Dans un troisième terminal:
 
 ```
 docker exec -it zk bin/pulsar-client --url pulsar://pulsar1-us:6650 consume persistent://world/global/mytopic -s mysub -r 100 -n 0

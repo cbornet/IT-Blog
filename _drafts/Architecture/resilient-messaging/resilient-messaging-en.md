@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "How Apache Pulsar allows to create a resilient messaging system"
-author:
+title: "Get strong message consistency and resilience with Apache Pulsar"
+author: rd.team
 categories: [ en, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
 ---
@@ -67,6 +67,8 @@ Several configurations must be set up in order to set up a synchronous active/pa
 - **_Rack Awareness_** : allows messages to be replicated synchronously on bookies belonging to different racks.
 - **_Region Awareness_** : allows messages to be replicated synchronously on bookies from different regions.
 - **_Read reordering_** : allows to privilege the reading of the messages on bookies belonging to the same region as the broker (when the functionality Region Awareness is used)
+
+> Note: the exposition of the `Rack Awareness` and `Read Reordering` features in the Apache Pulsar project is a contribution by Cdiscount.
 
 ### Demonstration with Docker
 
@@ -216,7 +218,7 @@ docker stop bk1-eu bk2-eu pulsar1-eu pulsar2-eu
 
 Since there are not enough brokers for the configured isolation policy (min_limit = 1) for the **eu** namespace, Pulsar will switch to the brokers of the **us** region. One of the brokers in the **us** area is chosen as the owner of the topic. To ensure the write quorum of 2, the data are persisted on the 2 bookies of the **us** region.
 
-##### Cleaning
+##### Cleaning up
 
 At the end of the tests, we can remove the cluster
 
@@ -313,7 +315,12 @@ Let's stop the production on the **_cluster-eu_** and launch production on the *
 docker exec -it pulsar1-us bin/pulsar-perf produce persistent://world/global/mytopic -u http://pulsar1-us:8080 -r 10
 ```
 
-We can also create a subscription on the topic **_mytopic_** on the **_cluster-us_** (NB: the subscriptions on the clusters are independent, there is no "global subscription"). In a third terminal:
+We can also create a subscription on the topic **_mytopic_** on the **_cluster-us_**.
+
+> Note: the subscriptions on the clusters are independent, there is no "global subscription".
+> At the time of publishing this post, Pulsar 2.4.0 has just been released with a feature of [replicated subscription](https://pulsar.apache.org/blog/2019/07/05/Apache-Pulsar-2-4-0/#replicated-subscription). This makes it possible to switch a consumer on the replicated cluster which is very useful if losing a few messages (mesaage replication lag) and having a few duplicates (subscription replication lag) during a failover is acceptable. However, if a strong consistency is required, the synchronous replication described above remains the only solution.
+
+In a third terminal:
 
 ```
 docker exec -it zk bin/pulsar-client --url pulsar://pulsar1-us:6650 consume persistent://world/global/mytopic -s mysub -r 100 -n 0
@@ -337,7 +344,7 @@ docker start bk1-eu bk2-eu pulsar1-eu pulsar2-eu
 
 When the **eu** cluster is back up, the client reconnects and receives the messages that were posted to **us** during shutdown.
 
-##### Cleaning
+##### Cleaning up
 
 At the end of the tests, we can remove the cluster
 

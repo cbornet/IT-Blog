@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Get strong message consistency and resilience with Apache Pulsar"
+title: "Ensure cross-datacenter consistency and resilience with Apache Pulsar"
 author: rd.team
 categories: [ en, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg

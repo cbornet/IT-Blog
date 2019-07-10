@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Concilier consistence forte des messages et résilience avec Apache Pulsar"
+title:  "Garantir la consistence et la résilience sur plusieurs datacenters avec Apache Pulsar"
 author: rd.team
 categories: [ fr, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg

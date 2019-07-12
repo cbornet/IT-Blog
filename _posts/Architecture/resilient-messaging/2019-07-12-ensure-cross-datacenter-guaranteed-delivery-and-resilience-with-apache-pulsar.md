@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ensure cross-datacenter consistency and resilience with Apache Pulsar"
+title: "Ensure cross-datacenter guaranteed delivery and resilience with Apache Pulsar"
 author: rd.team
 categories: [ en, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
@@ -10,9 +10,11 @@ _Grégory Guichard, R&D Engineer at Cdiscount_ <br>
 _Romain Castagnet, DevOps Engineer at Cdiscount_ <br>
 _Christophe Bornet, R&D Manager at Cdiscount_
 
-At Cdiscount, we process large volumes of real-time data through distributed messaging systems. For our event broadcasting needs, we currently use [Kafka](https://kafka.apache.org/ "Kafka") and for our queuing needs, we use [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). Due to the nature of the data processed by Cdiscount (orders, payments, etc ...), it is imperative to guarantee a very strong consistency of the data (no duplicates, no lost messages) with the greatest possible availability, even in case of sudden loss of one of our data centers. We had difficulties to guarantee this level of requirement with Kafka and RabbitMQ and this led us to evaluate [Apache Pulsar](https://pulsar.apache.org/), the latest technology that appeared recently and which highlights strong promises in this area.
+> [French version](../garantir-la-livraison-des-messages-et-la-resilience-sur-plusieurs-datacenters-avec-apache-pulsar)
 
-Prerequisites for testing: This blog uses [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) to simply start cluster nodes in isolated containers.
+At Cdiscount, we process large volumes of real-time data through distributed messaging systems. For our event broadcasting needs, we currently use [Kafka](https://kafka.apache.org/ "Kafka") and for our queuing needs, we use [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). Due to the nature of the data processed by Cdiscount (orders, payments, etc ...), it is imperative to guarantee a very strong delivery guarantee of the messages (do not lose any message) with the greatest possible availability, even in case of sudden loss of one of our data centers. We had difficulties to guarantee this level of requirement with Kafka and RabbitMQ and this led us to evaluate [Apache Pulsar](https://pulsar.apache.org/), the latest technology that appeared recently and which highlights strong promises in this area.
+
+Prerequisites for testing: this blog uses [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) to simply start cluster nodes in isolated containers.
 
 ## What is Pulsar?
 
@@ -36,7 +38,7 @@ In the architecture of Pulsar, we find three components:
 
 Pulsar has several features that make it unique compared to other messaging systems:
 
-- **Event delivery but also Message Queue** : By allowing multiple consumer groups to have their own index on the message queue, Pulsar allows event broadcasting uses on the same principle as Kafka. But Pulsar can also validate the processing of messages individually without blocking the message queue (or partition) which is not supported by Kafka and it is essential for use as queuing system.
+- **Event delivery but also Message Queue** : By allowing multiple consumer groups to have their own index on the message queue, Pulsar allows event broadcasting uses on the same principle as Kafka. But Pulsar can also validate the processing of messages individually without blocking the message queue (or partition) which is not supported by Kafka and is essential for use as a queuing system.
 
 - **Synchronous replication** : Synchronous replication is provided by BookKeeper and ensures the durability of messages even in case of loss of bookies. The rack-awareness feature ensures that messages are not acknowledged until they are written to nodes in separate data centers.
 
@@ -99,7 +101,7 @@ docker exec -it zk bin/pulsar initialize-cluster-metadata \
       --broker-service-url pulsar://pulsar1-eu:6650
 ```
 
-Then we create brokers and bookies :
+Then we create brokers and bookies. The brokers are configured to use `Region-aware placement policy` and `Read reordering`.
 
 ```
 docker-compose -f docker-compose_sync.yml up -d

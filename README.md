@@ -11,13 +11,10 @@ Le format Markdown choisi correspond à celui de [GitHub](https://guides.github.
 ### 1.1 Récupérer le repo Git en local
 
 La première étape est de cloner le repos Git sur votre poste
-
 ```bash
 git clone https://github.com/Cdiscount/IT-Blog.git
 ```
-
 ou
-
 ```bash
 git clone git@github.com:Cdiscount/IT-Blog.git
 ```
@@ -34,19 +31,15 @@ Afin de catégoriser les articles, il est souhaitable de ranger un article dans 
 Par exemple l'article suivant est dans la *"DevOps/Containerization"* vous devrez créer un répertoire *"Docker"* contenant un répertoire *"Containerization"*
 
 Une fois votre article écrit il vous faudra faire un commit local de vos modifications dans une branche
-
 ```bash
 git checkout -b ma-branche
 git add .
 git commit -m "<Your commit message>"
 ```
-
 Une fois le commit fait, il ne faudra pas oublier de pousser vos modifications sur le repos distant :
-
 ```bash
 git push origin ma-branche
 ```
-
 Puis ouvrir une Pull Request sur GitHub afin que le changement soit revu et commenté avant d'être fusionné sur `master`.
 
 ### 1.3 Publier l'article
@@ -65,7 +58,7 @@ NB: Afin d'alimenter le blog régulièrement il est préférable d'échelonner l
 
 Pour utiliser une version locale du blog pour valider vos modifications, il y a deux possibilités:
 * Installer et lancer [Jekyll](https://jekyllrb.com/docs/)
-* Utiliser `docker-compose` (plus simple)
+* Utiliser `docker-compose` (plus simple, pas besoin d'installer ruby)
 
 Pour lancer le blog avec `docker-compose`
 ```bash

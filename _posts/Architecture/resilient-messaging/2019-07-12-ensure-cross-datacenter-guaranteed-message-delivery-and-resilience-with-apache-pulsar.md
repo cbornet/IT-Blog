@@ -167,7 +167,7 @@ Once everything is configured, we restart the brokers so that they apply all the
 docker restart pulsar1-eu pulsar2-eu pulsar1-us pulsar2-us
 ```
 
-#### Tests
+#### Tests
 
 In order to verify the proper functioning of the cluster we use [Prometheus](https://prometheus.io/) which will recover the metrics exposed by the bookies. We also use [Grafana](https://grafana.com/) to visualize metrics as graphics.
 
@@ -257,11 +257,9 @@ The commands below are executed from the root of the [docker](https://github.com
 #### Configuration
 
 We start by creating the ZooKeeper cluster:
-
 ```
 docker-compose -f docker-compose_zk.yml up -d
 ```
-
 We then create the two Pulsar clusters and initialize them in ZooKeeper:
 
 ```

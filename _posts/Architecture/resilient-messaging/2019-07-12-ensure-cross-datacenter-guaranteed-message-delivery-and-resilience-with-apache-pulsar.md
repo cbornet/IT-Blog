@@ -185,13 +185,13 @@ docker exec -it pulsar1-eu bin/pulsar-perf produce persistent://mytenant/eu/myto
 
 On [Grafana], in the [dashboard **_bookeeper_**](http://localhost:3000/dashboard/file/bookkeeper.json), we can look at the graph **Write throughput** to check on which bookies are persisted the data.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/produceRackAware.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/produceRackAware.png)
 
 We see here that the data are written on the bookies **_bk1-eu_** and **_bk1-us_**, the data are stored on a bookie of each region.
 
 We can also check what happens during consumption on the graph **Read throughput**.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/consumeLocal.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/consumeLocal.png)
 
 During the consumption the data are read on the bookie of the same region as the customer and which persisted the data, here **_bk1_eu_**.
 
@@ -204,9 +204,9 @@ docker stop bk1-eu
 ```
 
 The bookie is no longer available, the topic is under-replicated. BookKeeper has a [self-healing](https://bookkeeper.apache.org/docs/latest/admin/autorecovery/) mechanism that will automatically replicate the topic data on the new bookie used in the active region **_bk2-eu_** to restore the write quorum. This is why after the loss of **_bk1-eu_** (at 13:44), we observe a peak of writing on **_bk2-eu_** and a peak of reading on **_bk1-us_**.
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/perteBK1_write.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/perteBK1_write.png)
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/pertebk1_read.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/pertebk1_read.png)
 
 During the time of self-healing, the client consumes the messages on **_bk1-us_**. Once **_bk2-eu_** replicates the data, the client consumes the messages on it.
 
@@ -231,10 +231,11 @@ docker-compose -f docker-compose_zk.yml down
 
 ## How to set up asynchronous geo-replication with Pulsar?
 
-### Presentation
+### Presentation
+
 [Georeplication](https://pulsar.apache.org/docs/en/administration-geo/) is an asynchronous replication of messages between clusters of a Pulsar instance. It allows consumers in one cluster to receive messages produced on another cluster.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/GeoReplication.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/GeoReplication.png)
 
 In this diagram, whether the producers P1, P2 or P3 produce on the topic T1 on clusters C1, C2 or C3, the messages are replicated between the different clusters. Once replicated, consumers C1 and C2 can process the messages on their respective cluster.
 
@@ -355,7 +356,7 @@ docker-compose -f docker-compose_geo.yml down
 docker-compose -f docker-compose_zk.yml down
 ```
 
-## Create an active / active messaging bus with strong data consistency guarantee
+## Create an active/active messaging bus with strong data consistency guarantee
 As we have seen, Pulsar namespaces and region-awareness features provide strong guarantees for message delivery while minimizing cross-datacenter exchanges with an active/passive cluster. But for our messaging needs, it was important to have active/active replication. To achieve this, we have combined synchronous replication and asynchronous geo-replication. This has several advantages:
 
 - Active/passive synchronous replication ensures that no messages are lost even if a datacenter is lost.
@@ -368,11 +369,11 @@ However, there are some disadvantages:
 - Passive brokers can be considered as a provisioned but unused resource. However, these resources only need to be started permanently if we are looking for maximum availability. If a momentary loss of availability is acceptable in the event of a failover, it is conceivable to start these brokers only when a failover is detected. You can even use paid-for-use resources in the cloud that will only be used during the failover.
 - Since we only validate a message produced when it has been replicated to the other region, this introduces latency to writing. This additional latency may be a brake for some applications and it will then necessary to choose between a very strong consistency of the data and the writing performance.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/activeActive.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/activeActive.png)
 
 In case of loss of the EU region, the switch is done automatically to the US region:
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/images/basculePulsar.png)
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/basculePulsar.png)
 
 ## Conclusion
 

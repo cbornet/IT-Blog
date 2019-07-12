@@ -6,11 +6,11 @@ categories: [ fr, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
 ---
 
-_Grégory guichard, Ingénieur R&D chez Cdiscount_<br>
+_Grégory Guichard, Ingénieur R&D chez Cdiscount_<br>
 _Romain Castagnet, Site Reliability Engineer chez Cdiscount_<br>
 _Christophe Bornet, Responsable R&D chez Cdiscount_
 
-> [Article en anglais](../ensure-cross-datacenter-guaranteed-delivery-and-resilience-with-apache-pulsar)
+> [Cliquer ici pour la version en anglais](../ensure-cross-datacenter-guaranteed-delivery-and-resilience-with-apache-pulsar)
 
 Chez Cdiscount, nous traitons d'importants volumes de données en temps réel grâce à des systèmes de messaging distribués. Pour nos besoins de diffusion d'événements, nous utilisons actuellement [Kafka](https://kafka.apache.org/ "Kafka") et pour nos besoins de queue, nous utilisons [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). En raison de la nature des données traitées par Cdiscount (commandes, paiements, etc...), il est impératif d'avoir une garantie très forte sur la livraison des messages (ne perdre aucun messages) avec la plus grande disponibilité possible, même en cas de perte subite d'un de nos datacenters. Nous avions des difficultés à garantir ce niveau d'exigence avec Kafka et RabbitMQ et cela nous a amené à évaluer [Apache Pulsar](https://pulsar.apache.org/), la toute dernière technologie apparue récemment et qui met en avant de fortes promesses dans ce domaine.
 

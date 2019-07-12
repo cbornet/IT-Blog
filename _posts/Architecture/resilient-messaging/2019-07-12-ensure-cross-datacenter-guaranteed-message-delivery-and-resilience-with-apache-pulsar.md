@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ensure cross-datacenter guaranteed delivery and resilience with Apache Pulsar"
+title: "Ensure cross-datacenter guaranteed message delivery and resilience with Apache Pulsar"
 author: rd.team
 categories: [ en, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg

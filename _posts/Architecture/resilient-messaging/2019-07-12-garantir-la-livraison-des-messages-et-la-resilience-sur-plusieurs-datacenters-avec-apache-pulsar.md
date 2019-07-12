@@ -7,7 +7,7 @@ image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
 ---
 
 _Grégory guichard, Ingénieur R&D chez Cdiscount_<br>
-_Romain Castagnet, Ingénieur DevOps chez Cdiscount_<br>
+_Romain Castagnet, Site Reliability Engineer chez Cdiscount_<br>
 _Christophe Bornet, Responsable R&D chez Cdiscount_
 
 > [Article en anglais](../ensure-cross-datacenter-guaranteed-delivery-and-resilience-with-apache-pulsar)

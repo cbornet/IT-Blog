@@ -5,7 +5,6 @@ author: fabien.poletti
 categories: [ fr, events ]
 image: "assets/images/Architecture/preparation_soldes/record_visites.PNG"
 ---
-_Environ 1500 mots, 5 minutes de lecture_
 
 ## Les soldes, un des moments forts de la vie du e-commerce
 Cdiscount vit au rythme des grands évènements commerciaux de l’année : soldes d’hiver, french days, soldes d’été, black friday, et Noël. À chaque évènement l’enjeux pour Cdiscount se compte en centaines de millions d’euro de flux. 

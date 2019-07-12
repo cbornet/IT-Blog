@@ -183,7 +183,7 @@ In another terminal, we then produce messages on the topic **_mytopic_**
 docker exec -it pulsar1-eu bin/pulsar-perf produce persistent://mytenant/eu/mytopic -u http://pulsar1-eu:8080 -r 100
 ```
 
-On Grafana, in the [dashboard **_bookeeper_**](http://localhost:3000/dashboard/file/bookkeeper.json), we can look at the graph **Write throughput** to check on which bookies are persisted the data.
+On Grafana, in the [**_bookeeper_** dashboard](http://localhost:3000/dashboard/file/bookkeeper.json), we can look at the graph **Write throughput** to check on which bookies are persisted the data.
 
 ![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/produceRackAware.png)
 

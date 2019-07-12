@@ -222,11 +222,13 @@ section.recent-posts {
 
 span.post-name,
 span.post-date,
+span.post-reading-time,
 span.author-meta {
     display: inline-block;
 }
 
 span.post-date,
+span.post-reading-time,
 span.post-read {
     color: rgba(0, 0, 0, .44);
 }

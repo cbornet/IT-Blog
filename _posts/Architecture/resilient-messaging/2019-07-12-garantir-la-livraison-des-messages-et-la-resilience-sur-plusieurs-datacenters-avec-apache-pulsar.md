@@ -57,7 +57,7 @@ Nous allons mettre en place un cluster Pulsar étendu sur 2 régions/datacenters
 
 En cas de panne du datacenter actif, les brokers du datacenter passif deviennent automatiquement utilisables pour publier/consommer des messages. Comme il n'y a qu'un seul cluster Pulsar, la bascule est transparente pour les clients.
 
-![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/namespace_isolation.png }})
+![]({{ site.baseurl }}/assets/images/Architecture/resilient-messaging/namespace_isolation.png)
 
 Plusieurs configurations doivent être mises en place afin de mettre en place un Pulsar actif/passif synchrone :
 

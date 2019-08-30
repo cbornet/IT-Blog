@@ -51,6 +51,10 @@ authors:
     display_name: Julien Jouganous
     description: Data Scientist at Cdiscount
     web: https://www.linkedin.com/in/julien-jouganous-647993124/
+  arnaud.belletoile:
+    name: Arnaud Belletoile
+    display_name:  Arnaud Belletoile
+    description: Team Leader Data Science at Cdiscount
   axel.bellec:
     name: Axel Bellec
     display_name: Axel Bellec
@@ -72,6 +76,9 @@ authors:
   rd.team:
     name: R&D team
     display_name: R&D team
+  datascience.team:
+    name: Data Science team
+    display_name: Cdiscount Data Science team
 
 # Plugins
 plugins:

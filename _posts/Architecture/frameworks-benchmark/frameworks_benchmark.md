@@ -73,7 +73,7 @@ Ce premier benchmark se décompose en trois tests:
 Chaque test est executé pendant 15 secondes avec un pool de 512 connexions.
 
   <p align= "center">
-      <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_without_grpc.png" alt="http/1 benchmark" width="700"/>
+      <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_without_grpc.png" alt="Historigram of benchmark without gRPC" width="700"/>
   <p/>
 
 > _(Résultats exprimés en Req/Secondes)_
@@ -122,7 +122,7 @@ Après avoir réalisé cette première série de Benchmark confrontant les perfo
 Comme expliqué ci-dessus, nous avons donc mis en place et implémenté gRPC et Protobuff pour cette seconde série de tests.
 
 <p align= "center">
-    <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_with_grpc.png" alt="http/2 benchmark" width="700"/>
+    <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_with_grpc.png" alt="Historigram of benchmark with gRPC" width="700"/>
 <p/>
 
 Encore une fois les résultats sont au rendez-vous et, hormis concernant le test plaintext sur le .Net (surement du à une mauvaise implémentation), les performances des différents frameworks sont boostés par ces outils.
@@ -131,7 +131,7 @@ Encore une fois les résultats sont au rendez-vous et, hormis concernant le test
 
 **_Tableau comparatif :_**
 <p align= "center">
-    <img src="../../../assets/images/Architecture/frameworks-benchmark/comparative_histo.png" alt="http/2 benchmark" width="1000"/>
+    <img src="../../../assets/images/Architecture/frameworks-benchmark/comparative_histo.png" alt="Comparative table of benchmarks" width="1000"/>
 <p/>
 
 ## Conclusion

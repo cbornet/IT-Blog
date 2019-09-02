@@ -46,7 +46,7 @@ Selon ce dernier un système réactif est :
 De façon pragmatique, disons qu’en programmation réactive, tout est flux de données asynchrones, ils sont partout !
 
 <p align= "center">
-    <img src="https://media.giphy.com/media/NAnYvSGZMYenS/giphy.gif" alt="meme everywhere" width="350"/>
+    <img src="https://media1.tenor.com/images/ecd1452251b6d76865cfb7e1b6ebe701/tenor.gif?itemid=4867927" alt="meme everywhere" width="350"/>
 <p/>
 
 Il devient en effet concevable de créer des flux à partir de tout et n’importe quoi, absolument toute source de donnée est par essence un flux : les variables, les entrées utilisateurs, les collections, les propriétés, les caches, les structures de données, etc.

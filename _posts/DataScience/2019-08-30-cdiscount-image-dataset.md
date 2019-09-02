@@ -16,7 +16,7 @@ Recent advances in artificial intelligence and image recognition allow a whole n
 
 Improving visual recommendation algorithms requires access to large labeled image datasets, possibly specialized in the core business they address. Available generic image datasets include 
 [_TinyImage_](https://groups.csail.mit.edu/vision/TinyImages/), [_LabelMe_](http://labelme.csail.mit.edu/Release3.0/browserTools/php/dataset.php), [_Lotus Hill_](https://ieeexplore.ieee.org/document/5204331), 
-Microsoft [_Common Objects in Context_ (_COCO_)](https://github.com/openimages/dataset) or [_OpenImages_](https://github.com/openimages/dataset). Of course, [_ImageNet_](http://www.image-net.org/) is the _de facto_ standard to bench image classification algorithms involving extremely large numbers of labels.
+Microsoft [_Common Objects in Context_ (_COCO_)](http://cocodataset.org/#home) or [_OpenImages_](https://github.com/openimages/dataset). Of course, [_ImageNet_](http://www.image-net.org/) is the _de facto_ standard to bench image classification algorithms involving extremely large numbers of labels.
 
 Most of the public datasets that are of direct use to on-line retailers are specialized in fashion items: the [_Exact Street2Shop_](http://www.tamaraberg.com/street2shop/wheretobuyit/README.txt) dataset identifies around 40,000 clothing items worn by 
 people on real-world street photos, and provides their exact match amongst hundreds of thousands of images from shopping websites; [_DeepFashion_](http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html) consists of over 800,000 annotated images that 

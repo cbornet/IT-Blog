@@ -78,7 +78,7 @@ authors:
     display_name: R&D team
   datascience.team:
     name: Data Science team
-    display_name: Cdiscount Data Science team
+    display_name: Data Science team
 
 # Plugins
 plugins:

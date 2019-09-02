@@ -66,33 +66,32 @@ En plus de ça il est également possible de combiner des flux, les transformer,
 
 Ce premier benchmark se décompose en trois tests:
 
-- Un premier directement en mémoire
-- Un second effectuant une seule requête par connexion
-- Puis un troisème effectuant une vingtaine de requêtes par connexion
+- Un premier effectuant une requête HTTP et retournant simplement une string  
+- Un second effectuant une seule query sur la base donnée pour chaque requête HTTP
+- Un troisième effectuant vingt queries vers la base de donnée pour chaque requête HTTP
 
 Chaque test est executé pendant 15 secondes avec un pool de 512 connexions.
 
   <p align= "center">
-      <img src="../../../assets/images/Architecture/frameworks-benchmark/historigramme_http1.png" alt="http/1 benchmark" width="800"/>
+      <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_without_grpc.png" alt="http/1 benchmark" width="700"/>
   <p/>
 
 > _(Résultats exprimés en Req/Secondes)_
 
-Comme on peut peu le constater .Net Core l'emporte largement pendant le test en mémoire mais Webflux prend clairement le dessus sur les tests Single & Multi-Queries...
-Sans trop de surprises, la version MVC de Spring fini à la traine assez loin derrière quand à elle.
+Comme on peut peu le constater .Net Core l'emporte pendant le  premier test,  la version Reactive de Spring-Data performe quand à elle sur les tests Single & Multi-Queries.
 
 Seconde donnée intéressante, nous avons également consulté la consommation de Threads par le logiciel _(Seulement pour Spring)_ :
 
 - Spring-MVC :
 
    <p align= "center">
-      <img src="../../../assets/images/Architecture/frameworks-benchmark/threads_springMvc.png" alt="http/1 benchmark" width="450"/>
+      <img src="../../../assets/images/Architecture/frameworks-benchmark/threads_springMvc.png" alt="benchmark threads result spring-data" width="450"/>
   <p/>
 
 - Spring-Webflux:
 
    <p align= "center">
-      <img src="../../../assets/images/Architecture/frameworks-benchmark/threads_reactiveSpring.png" alt="http/1 benchmark" width="450"/>
+      <img src="../../../assets/images/Architecture/frameworks-benchmark/threads_reactiveSpring.png" alt="benchmark threads result reactive spring-data" width="450"/>
   <p/>
 
   Résultat sans appel, encore une fois Webflux l'emporte très largement en diminuant le nombre de threads par 10.5 !
@@ -120,17 +119,20 @@ Après avoir réalisé cette première série de Benchmark confrontant les perfo
 
 ## Seconde Série
 
-Comme expliqué ci-dessus, nous avons donc mis en place et implémenté gRPC et Protobuff pour cette seconde série.
-
-5 tests ont étés réalisés cette fois-ci, en plus des 3 précedents nous avons aussi ajouté le streaming coté serveur ainsi que le streaming bidirectionnel.
+Comme expliqué ci-dessus, nous avons donc mis en place et implémenté gRPC et Protobuff pour cette seconde série de tests.
 
 <p align= "center">
-    <img src="../../../assets/images/Architecture/frameworks-benchmark/historigramme_http2.png" alt="http/2 benchmark" width="800"/>
+    <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_with_grpc.png" alt="http/2 benchmark" width="700"/>
 <p/>
 
-Encore une fois les résultats sont au rendez-vous et, hormis concernant le test InMemory sur le .Net , les performances des 3 frameworks sont boostés par ces outils.
+Encore une fois les résultats sont au rendez-vous et, hormis concernant le test plaintext sur le .Net (surement du à une mauvaise implémentation), les performances des différents frameworks sont boostés par ces outils.
 
-Vis à vis du nombre de threads utilisés en revanche, gRPC et protocol buffer n'ont simplement aucun impact dessus.
+> Vis à vis du nombre de threads utilisés en revanche, gRPC et protocol buffer n'ont simplement aucun impact dessus.
+
+**_Tableau comparatif :_**
+<p align= "center">
+    <img src="../../../assets/images/Architecture/frameworks-benchmark/comparative_histo.png" alt="http/2 benchmark" width="1000"/>
+<p/>
 
 ## Conclusion
 
@@ -138,3 +140,4 @@ Vis à vis du nombre de threads utilisés en revanche, gRPC et protocol buffer n
 
 « Le logiciel ralentit plus vite que le matériel n’accélère » disait Niklaus Wirth en 1995, le problème n'est pas nouveau, et les solutions existantes tels que le modèle réactif non plus, ce qui change, en revanche, c'est l'explosion du nombre d'applications candidates à ce type de modèle.
 Néanmoins, si ces systèmes réactifs permettent effectivement une interaction accrue et donc une grande satisfaction de l'utilisateur, il convient de noter qu'il est tout de même nécessaire d'appréhender un nouveau paradigme ainsi qu'un nouveau niveau d'abstraction avant que cela ne devienne naturel... Mais le jeu en vaut la chandelle !
+de .

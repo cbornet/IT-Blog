@@ -66,7 +66,7 @@ En plus de ça il est également possible de combiner des flux, les transformer,
 
 Ce premier benchmark se décompose en trois tests:
 
-- Un premier effectuant une requête HTTP et retournant simplement une string  
+- Un premier retournant simplement une string par requête HTTP
 - Un second effectuant une seule query sur la base donnée pour chaque requête HTTP
 - Un troisième effectuant vingt queries vers la base de donnée pour chaque requête HTTP
 
@@ -125,7 +125,7 @@ Comme expliqué ci-dessus, nous avons donc mis en place et implémenté gRPC et 
     <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_with_grpc.png" alt="Historigram of benchmark with gRPC" width="700"/>
 <p/>
 
-Encore une fois les résultats sont au rendez-vous et, hormis concernant le test plaintext sur le .Net (surement du à une mauvaise implémentation), les performances des différents frameworks sont boostés par ces outils.
+Encore une fois les résultats sont au rendez-vous et, hormis concernant le test plaintext sur le .Net (probablement du à une erreur d'implémentation), les performances des différents frameworks sont boostés par ces outils.
 
 > Vis à vis du nombre de threads utilisés en revanche, gRPC et protocol buffer n'ont simplement aucun impact dessus.
 

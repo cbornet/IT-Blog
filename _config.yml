@@ -39,6 +39,12 @@ authors:
     avatar: assets/images/authors/david.bourasseau.jpeg
     web: https://www.linkedin.com/in/david-bourasseau/
     description: R&D Engineer at Cdiscount
+  gregory.guichard:
+    name: Grégory Guichard
+    display_name: Grégory Guichard
+    avatar: assets/images/authors/gregory.guichard.jpeg
+    web: https://www.linkedin.com/in/gr%C3%A9gory-guichard-7a8347110/
+    description: R&D Engineer at Cdiscount
   bruno.goutorbe:
     name: Bruno Goutorbe
     display_name: Bruno Goutorbe

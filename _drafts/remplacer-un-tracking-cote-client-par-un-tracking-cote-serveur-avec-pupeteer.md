@@ -2,9 +2,10 @@
 layout: post
 title: "Remplacer un tracking côté client par un tracking côté serveur avec Puppeteer"
 author: gregory.guichard
-categories: [ fr, cloud, web ]
+categories: [fr, cloud, web]
 image: assets/images/Architecture/tracking_server/thumbnail.jpg
 ---
+
 Le tracking fait maintenant partie intégrante du web.
 Tous les sites web disposent de scripts qui permettent de suivre les actions de ses utilisateurs afin d'améliorer leur expérience, de comprendre leur comportement et de leur proposer des offres qui correspondent à leurs besoins.
 Cependant ces trackers demandent des ressources aux terminaux des clients pour leurs exécutions, et cela peut donc ralentir la navigation et nuire à l'expérience utilisateur.
@@ -14,7 +15,10 @@ Cependant ces trackers demandent des ressources aux terminaux des clients pour l
 Il existe de nombreux trackers, les plus connus sont le [pixel Facebook](https://fr-fr.facebook.com/business/) ou encore [Google Analytics](https://analytics.google.com/analytics/web/).
 Ils permettent de suivre le nombre de visites, les pages les plus consultées, les actions des utilisateurs ou encore les caractéristiques des utilisateurs (résolution, terminal et navigateur utilisé, système d'exploitation, etc.).
 Un tracker est un élément ajouté à une page HTML (eg. un script Javascript ou une image) et qui va être exécuté sur le navigateur du client pour transmettre des informations à un serveur distant où elles seront collectées et analysées.
+Les trackers ont des finalités différentes, certains trackers permettent d'améliorer la pertinence du contenu, de s'adapter aux usages des utlisateurs, d'améliorer le référencement, etc. C'est pourquoi il est fréquent d'avoir plusieurs trackers sur un même site.
 Le tracking s'accompagne souvent d'un cookie qui est installé sur le terminal client, afin de le suivre pendant sa navigation sur le site et éventuellement lors de ses prochaines visites.
+
+![tracking client vs tracking serveur]({{ site.baseurl }}/assets/images/Architecture/tracking_server/tracking-client-serveur.png)
 
 ## Quels sont les avantages d'un tracking Back-End ?
 
@@ -78,7 +82,7 @@ Afin de pouvoir de tenir le trafic présent sur le site nous avons donc du optim
   Des Kafka Streams sont utilisés pour enrichir les données de tracking avec le cookie de tracking correspondant s'il a déjà été généré.
 
 - **Délégation de l'exécution des requêtes** : l'exécution des requêtes par le navigateur est coûteuse. Le navigateur doit attendre la réponse de la requête HTTP, gérer les échecs et les renvois avant de pouvoir passer au tracker suivant.
-  Cela ralentit l'exécution des trackers. C'est pourquoi les requêtes à exécuter sont publiées dans un topic Kafka pour être exécutées de façon asynchrone par un micro-service dédié. 
+  Cela ralentit l'exécution des trackers. C'est pourquoi les requêtes à exécuter sont publiées dans un topic Kafka pour être exécutées de façon asynchrone par un micro-service dédié.
 
 - **Stockage des cookies dans un cache** : si c'est la première fois qu'un tracker est exécuté, il génère en général un cookie qui doit être réutilisé lors de la prochaine exécution.
   Cela permet de distinguer les utilisateurs et de suivre leur navigation.
@@ -102,6 +106,11 @@ Afin de pouvoir de tenir le trafic présent sur le site nous avons donc du optim
 ## Conclusion
 
 Nous avons vu comment déployer un tracking côté serveur.
-Ce type de tracking apporte son lot de difficultés et a un coût plus important.
+Ce type de tracking apporte son lot de difficultés et de limitations :
+
+- Les informations que l'on envoit aux partenaires doivent être connues à l'avance afin de les récupérer auprès du client et de pouvoir les simuler dans nos navigateurs virtuels.
+- Certains trackers ont des comportements particuliers (e.g une temporisation de quelques secondes ou attente d'un événement avant d'envoyer une requête) et peuvent donc dégrader nos performances.
+- La simulation de navigateurs nécessite du temps CPU et également de la maintenance. Cela induit un coût plus important que le tracking côté client.
+
 Néanmoins le tracking Back-End permet de décharger l'utilisateur de l'exécution des scripts et donc de lui proposer une meilleure expérience de navigation.
 Il permet également de contrôler la cohérence et la qualité des données fournies aux trackers partenaires et donc la cohérence des analyses fournies par ces partenaires.

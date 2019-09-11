@@ -7,7 +7,7 @@
 <p/>
 Si ce genre de considération ne se posait peut-être pas il y a quelques dizaines d’années, nos applications web modernes doivent aujourd’hui, de part leur dynamisme et leur intéractivité accru, gérer de très nombreux types d’évènements afin d’enrichir toujours plus l’expérience utilisateur.
 
-Pour répondre au mieux à ces besoins, il nous faut déterminer quels outils seront les plus adaptés à cette tâche. À CDiscount, nous avons donc décidé d’évaluer plusieurs solutions en réalisant une série de benchmarks pour support.
+Pour répondre au mieux à ces besoins, il nous faut déterminer quels outils seront les plus adaptés à cette tâche. À CDiscount, nous avons donc décidé d’évaluer plusieurs solutions en réalisant une série de benchmarks.
 
 ## Reactive Spring
 
@@ -21,7 +21,7 @@ Webflux à opté, de son côté, pour une approche réactive, non-bloquante, asy
 
 ### Qu'est ce que la programmation réactive ?
 
-Il va de soit que les machines sont devenues, avec le temps, de plus en plus puissantes mais qu’en parallèle les applications sont également devenues plus complexes et voraces en ressources, allant jusqu’à dépasser la courbe de croissance des améliorations matérielles...la programmation réactive part de ce simple constat.
+Il va de soit que les machines sont devenues, avec le temps, de plus en plus puissantes mais qu’en parallèle les applications sont également devenues plus complexes et voraces en ressources, allant jusqu’à dépasser la courbe de croissance des améliorations matérielles, la programmation réactive part de ce simple constat.
 
 L’idée est de proposer au développeur un modèle dans lequel il devient possible de créer des applications répondants aux 4 piliers du [manifeste réactif](https://www.reactivemanifesto.org/fr).
 
@@ -57,7 +57,6 @@ En plus de ça il est également possible de combiner des flux, les transformer,
 > **_A Savoir:_**
 >
 > - Concernant la conception du bench à proprement parler nous nous sommes grandement inspirés des travaux de [Techempower](http://www.techempower.com/)
-> - Nous avons égallement pris le soin d'intégrer dans notre benchmark le framework [ASP.Net Core](https://dotnet.microsoft.com/learn/web/what-is-aspnet-core) de Microsoft, bien connu pour ses excellentes performances, afin d'ajouter un peu de granularité à cette série.
 > - **Infra** :
 >   **x3 Machines** (Serveur, Client, BDD) ///
 >   **OS**: Debian GNU/Linux 9.6 (stretch) ///
@@ -78,9 +77,9 @@ Chaque test est executé pendant 15 secondes avec un pool de 512 connexions.
 
 > _(Résultats exprimés en Req/Secondes)_
 
-Comme on peut peu le constater .Net Core l'emporte pendant le  premier test,  la version Reactive de Spring-Data performe quand à elle sur les tests Single & Multi-Queries.
+Comme on peut peu le constater, l'approche Reactive de Spring-Data performe immédiatement sur toute la série de tests.
 
-Seconde donnée intéressante, nous avons également consulté la consommation de Threads par le logiciel _(Seulement pour Spring)_ :
+Seconde donnée intéressante, nous avons également consulté la consommation de Threads par le logiciel :
 
 - Spring-MVC :
 
@@ -98,7 +97,7 @@ Seconde donnée intéressante, nous avons également consulté la consommation d
 
 ## gRPC & Protocol Buffers
 
-Après avoir réalisé cette première série de Benchmark confrontant les performances de Spring-MVC, Spring-Webflux et .NetCore, nous avons voulu aller plus loin en tentant d’augmenter les performances de ces derniers grâce aux deux autres outils que sont Protocol Buffer et gRPC.
+Après avoir réalisé cette première série de Benchmark confrontant les performances de Spring-MVC et Spring-Webflux, nous avons voulu aller plus loin en tentant d’augmenter les performances de ces derniers grâce aux deux autres outils que sont Protocol Buffer et gRPC.
 
 - **Protocol Buffer** :
 
@@ -125,9 +124,9 @@ Comme expliqué ci-dessus, nous avons donc mis en place et implémenté gRPC et 
     <img src="../../../assets/images/Architecture/frameworks-benchmark/histo_with_grpc.png" alt="Historigram of benchmark with gRPC" width="700"/>
 <p/>
 
-Encore une fois les résultats sont au rendez-vous et, hormis concernant le test plaintext sur le .Net (probablement du à une erreur d'implémentation), les performances des différents frameworks sont boostés par ces outils.
+Encore une fois les résultats sont au rendez-vous et les performances de spring-MVC, autant que celles de spring-Webflux, sont boostés par ces outils sur l'ensemble de la série.
 
-> Vis à vis du nombre de threads utilisés en revanche, gRPC et protocol buffer n'ont simplement aucun impact dessus.
+> N.B. : gRPC et protocol buffer n'ont pas d'impact sur le nombre de threads utilisés.
 
 **_Tableau comparatif :_**
 <p align= "center">
@@ -139,4 +138,4 @@ Encore une fois les résultats sont au rendez-vous et, hormis concernant le test
 > Pour les curieux et ceux qui voudraient faire leurs propres tests, le projet est dispo avec un quick-start sur [**Github**](https://github.com/SouenMazouin/framework-benchmarks).
 
 « Le logiciel ralentit plus vite que le matériel n’accélère » disait Niklaus Wirth en 1995, le problème n'est pas nouveau, et les solutions existantes tels que le modèle réactif non plus, ce qui change, en revanche, c'est l'explosion du nombre d'applications candidates à ce type de modèle.
-Néanmoins, si ces systèmes réactifs permettent effectivement une interaction accrue et donc une grande satisfaction de l'utilisateur, il convient de noter qu'il est tout de même nécessaire d'appréhender un nouveau paradigme ainsi qu'un nouveau niveau d'abstraction avant que cela ne devienne naturel... Mais le jeu en vaut la chandelle !
+Néanmoins, si ces systèmes réactifs permettent effectivement une interaction accrue et donc une grande satisfaction de l'utilisateur, il convient de noter qu'il est tout de même nécessaire d'appréhender un nouveau paradigme ainsi qu'un nouveau niveau d'abstraction avant que cela ne devienne naturel, mais le jeu en vaut la chandelle !

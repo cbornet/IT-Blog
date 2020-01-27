@@ -16,16 +16,29 @@ To do this we need to know how much messages are still to be processed before ge
 ## Computing the number of messages that must be read by a consumer
 
 In Kafka, messages are written to and read from topics.
-When creating a topic, one can choose to spread it over a certain number of partitions. 
+When creating a topic, one can choose to spread it over a certain number of partitions.
 Each partition is replicated according to the topic replication factor on a number of the Kafka cluster node. 
 Kafka elects a leader node for the partition on which all reads and writes are made. Each time a message is written to the partition by a producer, Kafka increments the "end offset" of that partition.
+
+{: style="text-align:center"}
+![log_anatomy](https://kafka.apache.org/24/images/log_anatomy.png)
 
 To consume messages, Kafka uses the concept of consumer groups.
 You can have multiple consumer groups consuming a topic and each group will get all the messages from the topic.
 Inside a consumer group, each consumer will be attributed one or more partitions to read from.
 A consumer can read from multiple partitions but a partition can be attributed to only one consumer of a consumer group (meaning you can't have more consumers than partitions inside a consumer group).
+
+{: style="text-align:center"}
+![consumer_groups](https://kafka.apache.org/24/images/consumer-groups.png)
+
 To know the position at which it should read new messages, an offset is maintained by Kafka for each consumer group and partition. Consumers need to regularly commit to Kafka the new offsets as they read and process new messages.
+
+{: style="text-align:center"}
+![]({{ site.baseurl }}/assets/images/Architecture/kafka-lag-stats/log_consumer2.png)
+
 The consumer lag for a partition and consumer group is the difference between the end offset and the consumer group offset for that partition.
+
+To get more details on topics, offsets and consumer groups, you can refer to the excellent [Kafka's documentation](https://kafka.apache.org/documentation/#intro_topics).
 
 ### Determining the partition on which a message is stored
 
@@ -51,20 +64,20 @@ The Kafka admin API has a [listConsumerGroupOffsets](https://kafka.apache.org/24
 
 ### Computing the number of messages that must be read before reaching a message
 
-Once we know on which partition a message is stored, we can compute the the number of messages as the difference between the parnsumer group.
-
-### Computing the number of messages that must be read before reaching a message
-
 Once we know on which partition a message is stored, we can compute the the number of messages as the difference between the partition offset at the time the message was published and the current consumer offset for the partition.
 
 ## Estimating the speed of consumption of a consumer
 
 There are two cases regarding the speed of consumption:
 * The consumer doesn't lag behind the producer: it means that the consumer is faster than the producer and the speed of consumption is the speed of the producer.
-* The consumer lags behind the producer: the speed of consumption is the one of the consumer.tition offset at the time the message was published and the current consumer offset for the partition.
+* The consumer lags behind the producer: the speed of consumption is the one of the consumer.
 
 We can determine the speed of consumption for a lagging consumer by computing the difference of consumer offsets taken at 2 distinct timestamps and dividing it by the difference of those two timestamps.
 The timestamps must be close enough to assume that the consumer didn't catch up to the producer between them (or else during the time the consumer had catched up we were measuring the speed of the producer and not the one of the consumer).
+
+{: style="text-align:center"}
+![]({{ site.baseurl }}/assets/images/Architecture/kafka-lag-stats/consumer_lag_speed.jpg)
+
 Kafka doesn't retain the consumer offsets for a given timestamps like it does for the producer offsets.
 So the strategy we used was to run a service that would snapshot the consumer offsets at regular intervals using the [listConsumerGroupOffsets](https://kafka.apache.org/24/javadoc/org/apache/kafka/clients/admin/Admin.html#listConsumerGroupOffsets-java.lang.String-) method of a Kaka admin client. Those snapshots are stored in an in-memory circular buffer.
 Then we can compute the speed of consumption at a given time using these snapshots.
@@ -72,7 +85,7 @@ We then filter these speeds to only keep the ones where the consumer is lagging 
 
 ## Estimating the time remaining before a message is consumed by a consumer
 
-The time remaining before a message is consumed by a consumer is computed as the speed of consumption of the consumer for the message partition multiplied by the number of messages that the consumer must read before reaching the message.
+The time remaining before a message is consumed by a consumer is computed as the number of messages that the consumer must read before reaching the message divided by the speed of consumption of the consumer for the message partition.
 
 ## To conclude
 

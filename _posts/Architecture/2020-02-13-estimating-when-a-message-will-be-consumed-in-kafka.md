@@ -97,3 +97,29 @@ We also published a docker image for quick usage:
 ```
 docker pull cdiscount/kafka-lag-stats
 ```
+The consumption of the message is defined by the consumer group, the topic and the partition on which the message is written.
+If the partitioner used by the producer is the [DefaultPartitioner](https://github.com/apache/kafka/blob/2.3.1/clients/src/main/java/org/apache/kafka/clients/producer/internals/DefaultPartitioner.java) and the producer uses a partition key, then the kafka-lag-stats endpoints can be used by providing the partition key used for the message. Otherwise, the partition must be provided explicitly.
+
+Example for topic `my-topic`, consumer group `my-group`, message key `my-key`:
+
+```shell
+curl "http://localhost:8080/api/kafka-lag/time-remaining?group=my-group&topic=my-topic&key=my-key&publishTimestamp=2019-11-28T10:02:57.574Z"
+```
+
+```json
+{
+  "partition" : 0,
+  "timeRemaining" : 440.32,
+  "messageLag" : {
+    "consumerOffset" : 2500,
+    "producerOffset" : 8004,
+    "lagMessages" : 5504,
+    "timestamp" : "2019-11-28T10:02:57.574Z"
+  },
+  "speedStats" : {
+    "meanSpeed" : {
+      "mean" : 12.5,
+      "stddev" : 12.5,
+      "stddevPercent" : 100.0
+    },
+```

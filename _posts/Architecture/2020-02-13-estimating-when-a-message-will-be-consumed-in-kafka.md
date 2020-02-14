@@ -64,7 +64,7 @@ The Kafka admin API has a [listConsumerGroupOffsets](https://kafka.apache.org/24
 
 ### Computing the number of messages that must be read before reaching a message
 
-Once we know on which partition a message is stored, we can compute the the number of messages as the difference between the partition offset at the time the message was published and the current consumer offset for the partition.
+Once we know on which partition a message is stored, we can compute the number of messages as the difference between the partition offset at the time the message was published and the current consumer offset for the partition.
 
 ## Estimating the speed of consumption of a consumer
 
@@ -89,10 +89,10 @@ The time remaining before a message is consumed by a consumer is computed as the
 
 ## To conclude
 
-We have developped an application called [kafka-lag-stats](https://github.com/cbornet/kafka-lag-stats) that can be connected to any Kafka cluster and that performs the regular snapshots required to compute the speed of consumption.
+We have developped an application called [kafka-lag-stats](https://github.com/Cdiscount/kafka-lag-stats) that can be connected to any Kafka cluster and that performs the regular snapshots required to compute the speed of consumption.
 It also exposes an HTTP endpoint to estimate the time remaining before a message is consumed depending on the consumer group, the message partition key (or direct partition number if known), and the timestamp at which the message was published.
 
-The code is hosted on [github](https://github.com/cbornet/kafka-lag-stats) and we happily welcome contributions.
+The code is hosted on [github](https://github.com/Cdiscount/kafka-lag-stats) and we happily welcome contributions.
 We also published a docker image for quick usage:
 ```
 docker pull cdiscount/kafka-lag-stats

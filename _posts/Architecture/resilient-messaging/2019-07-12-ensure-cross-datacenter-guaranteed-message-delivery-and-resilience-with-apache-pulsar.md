@@ -4,14 +4,11 @@ title: "Ensure cross-datacenter guaranteed message delivery and resilience with 
 author: rd.team
 categories: [ en, cloud ]
 image: assets/images/Architecture/resilient-messaging/mailboxes.jpg
+precontent: "[🇫🇷 Vers la version française](../garantir-la-livraison-des-messages-et-la-resilience-sur-plusieurs-datacenters-avec-apache-pulsar)<br>
+_Grégory Guichard, R&D Engineer at Cdiscount_<br>
+_Romain Castagnet, Site Reliability Engineer at Cdiscount_<br>
+_Christophe Bornet, R&D Manager at Cdiscount_"
 ---
-
-_Grégory Guichard, R&D Engineer at Cdiscount_ <br>
-_Romain Castagnet, Site Reliability Engineer at Cdiscount_ <br>
-_Christophe Bornet, R&D Manager at Cdiscount_
-
-> [[Click here for French version]](../garantir-la-livraison-des-messages-et-la-resilience-sur-plusieurs-datacenters-avec-apache-pulsar)
-
 At Cdiscount, we process large volumes of real-time data through distributed messaging systems. For our event broadcasting needs, we currently use [Kafka](https://kafka.apache.org/ "Kafka") and for our queuing needs, we use [RabbitMQ](https://www.rabbitmq.com/ "RabbitMQ"). Due to the nature of the data processed by Cdiscount (orders, payments, etc ...), it is imperative to have a very strong delivery guarantee of the messages (do not lose any message) with the greatest possible availability, even in case of sudden loss of one of our data centers. We had difficulties to guarantee this level of requirement with Kafka and RabbitMQ and this led us to evaluate [Apache Pulsar](https://pulsar.apache.org/), the latest technology that appeared recently and which highlights strong promises in this area.
 
 Prerequisites for testing: this blog uses [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) to easily start cluster nodes in isolated containers.

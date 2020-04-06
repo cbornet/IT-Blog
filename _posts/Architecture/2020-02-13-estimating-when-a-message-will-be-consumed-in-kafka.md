@@ -79,7 +79,7 @@ The timestamps must be close enough to assume that the consumer didn't catch up 
 ![]({{ site.baseurl }}/assets/images/Architecture/kafka-lag-stats/consumer_lag_speed.jpg)
 
 Kafka doesn't retain the consumer offsets for a given timestamps like it does for the producer offsets.
-So the strategy we used was to run a service that would snapshot the consumer offsets at regular intervals using the [listConsumerGroupOffsets](https://kafka.apache.org/24/javadoc/org/apache/kafka/clients/admin/Admin.html#listConsumerGroupOffsets-java.lang.String-) method of a Kaka admin client. Those snapshots are stored in an in-memory circular buffer.
+So the strategy we used was to run a service that would snapshot the consumer offsets at regular intervals using the [listConsumerGroupOffsets](https://kafka.apache.org/24/javadoc/org/apache/kafka/clients/admin/Admin.html#listConsumerGroupOffsets-java.lang.String-) method of a Kafka admin client. Those snapshots are stored in an in-memory circular buffer.
 Then we can compute the speed of consumption at a given time using these snapshots.
 We then filter these speeds to only keep the ones where the consumer is lagging and compute a weighed average over a period of time.
 

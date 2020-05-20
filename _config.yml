@@ -52,6 +52,12 @@ authors:
     avatar: assets/images/authors/gregory.guichard.jpeg
     web: https://www.linkedin.com/in/gr%C3%A9gory-guichard-7a8347110/
     description: R&D Engineer at Cdiscount
+  souen.mazouin:
+    name: Souen Mazouin
+    display_name: Souen Mazouin
+    avatar: assets/images/authors/souen.mazouin.jpeg
+    web: https://www.linkedin.com/in/souen-mazouin/
+  description: R&D Engineer at Cdiscount
   bruno.goutorbe:
     name: Bruno Goutorbe
     display_name: Bruno Goutorbe

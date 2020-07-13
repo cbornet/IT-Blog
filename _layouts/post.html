@@ -76,6 +76,9 @@ post_class: post-template
 
             <!-- Post Content -->
             <div class="article-post">
+                {% if page.precontent %}
+                    <p><em>{{page.precontent | markdownify}}</em></p>
+                {% endif %}
                 <!-- Toc if any -->
                 {% if page.toc %}
                     {% if page.beforetoc %}

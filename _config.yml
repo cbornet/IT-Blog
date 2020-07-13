@@ -4,7 +4,7 @@ title: "Tech by Cdiscount"
 description: "A lot more technologies than you think"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.png'
-baseurl: 
+baseurl: ''
 google_analytics: 'UA-105824072-1'
 # TODO: disqus: 'xxxx'
 # TODO: mailchimp-list:
@@ -33,6 +33,13 @@ authors:
   fabien.poletti:
     name: Fabien Poletti
     display_name: Fabien Poletti
+  christophe.bornet:
+    name: Christophe Bornet
+    display_name: Christophe Bornet
+    avatar: assets/images/authors/christophe.bornet.jpeg
+    web: https://www.linkedin.com/in/christophe-bornet-bab1193/
+    twitter: https://twitter.com/cbornet_
+    description: R&D Manager at Cdiscount
   david.bourasseau:
     name: David Bourasseau
     display_name: David Bourasseau
@@ -45,6 +52,12 @@ authors:
     avatar: assets/images/authors/gregory.guichard.jpeg
     web: https://www.linkedin.com/in/gr%C3%A9gory-guichard-7a8347110/
     description: R&D Engineer at Cdiscount
+  souen.mazouin:
+    name: Souen Mazouin
+    display_name: Souen Mazouin
+    avatar: assets/images/authors/souen.mazouin.jpeg
+    web: https://www.linkedin.com/in/souen-mazouin/
+  description: R&D Engineer at Cdiscount
   bruno.goutorbe:
     name: Bruno Goutorbe
     display_name: Bruno Goutorbe
